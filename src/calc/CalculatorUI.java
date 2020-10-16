@@ -357,8 +357,52 @@ public class CalculatorUI extends JFrame {
         button_equals.setForeground(Color.WHITE);
         button_equals.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
         button_equals.setBackground(Color.PINK);
-        button_equals.setBounds(327, 242, 75, 40);
+        button_equals.setBounds(327, 340, 75, 40);
         getContentPane().add(button_equals);
+
+        JButton button_multiply = new JButton("*");
+        button_multiply.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                button_multiply.setBackground(Color.WHITE);
+            }
+
+            public void mouseReleased(MouseEvent e) {
+                button_multiply.setBackground(Color.PINK);
+            }
+        });
+        button_multiply.addActionListener(e -> {
+            saveValueOfArg1();
+            saveValueOfMathOp(OPERATOR.MULTIPLY);
+        });
+        button_multiply.setOpaque(true);
+        button_multiply.setForeground(Color.WHITE);
+        button_multiply.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
+        button_multiply.setBackground(Color.PINK);
+        button_multiply.setBounds(327, 240, 75, 40);
+        getContentPane().add(button_multiply);
+
+        JButton button_divide = new JButton("/");
+        button_multiply.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                button_divide.setBackground(Color.WHITE);
+            }
+
+            public void mouseReleased(MouseEvent e) {
+                button_divide.setBackground(Color.PINK);
+            }
+        });
+        button_divide.addActionListener(e -> {
+            saveValueOfArg1();
+            saveValueOfMathOp(OPERATOR.DIVIDE);
+        });
+        button_divide.setOpaque(true);
+        button_divide.setForeground(Color.WHITE);
+        button_divide.setBorder(new MatteBorder(4, 4, 4, 4, Color.WHITE));
+        button_divide.setBackground(Color.PINK);
+        button_divide.setBounds(327, 290, 75, 40);
+        getContentPane().add(button_divide);
 
         JButton button_clear = new JButton("AC");
         button_clear.addMouseListener(new MouseAdapter() {
