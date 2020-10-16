@@ -48,16 +48,6 @@ public class Home extends JFrame{
 
 
 
-/*
-        buttonOne.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                cl.show(panelCont, "2");
-            }
-        });
-*/
-
-
         add(panelCont);
         pack();
 

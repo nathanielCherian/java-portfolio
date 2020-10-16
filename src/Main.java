@@ -4,8 +4,7 @@ public class Main {
 
     public static void main(String[] args){
         System.out.println("HELLO WORLD");
-        Home.main(null);
+        Portfolio.main(null);
 
     }
 }
-//I HATE ANTHONY SO MUCH
