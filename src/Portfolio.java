@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Random;
 
 public class Portfolio extends JFrame{
@@ -39,7 +41,7 @@ public class Portfolio extends JFrame{
     protected Timer timer = new Timer(20, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.out.println(Integer.toString(r) + ", " + Integer.toString(g) + ", " + Integer.toString(b));
+            //System.out.println(Integer.toString(r) + ", " + Integer.toString(g) + ", " + Integer.toString(b));
 
             if (!rpeaked){
                 r += rand.nextInt(5);
@@ -85,6 +87,7 @@ public class Portfolio extends JFrame{
         }
     });
 
+
     public Portfolio(){
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,11 +108,12 @@ public class Portfolio extends JFrame{
         add(calculator_button);
 
 
+
+
         timer.start();
         pack();
 
     }
-
 
 
 
