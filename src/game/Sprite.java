@@ -14,12 +14,14 @@ public class Sprite{
     int x = 0;
     int y = 0;
 
+    int r = 80;
+
     int speed = 5;
 
 
     public void paint(Graphics2D g2d) {
 
-        Ellipse2D shape = new Ellipse2D.Double(x,y,80,80);
+        Ellipse2D shape = new Ellipse2D.Double(x,y,r,r);
         g2d.setColor(Color.red);
         g2d.fill(shape);
 
