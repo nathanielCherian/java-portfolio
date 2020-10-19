@@ -10,6 +10,7 @@ import java.util.Set;
 
 public class Sprite{
 
+    public String state = "NORTH";
 
     int x = 0;
     int y = 0;
@@ -69,6 +70,10 @@ public class Sprite{
 
     public void move_right(){
         x += speed;
+    }
+
+    public Rectangle get_bounds(){
+        return new Rectangle(x, y, r, r);
     }
 
 

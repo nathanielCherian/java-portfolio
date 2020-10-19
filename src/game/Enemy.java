@@ -48,6 +48,21 @@ public class Enemy extends Sprite{
     }
 
 
+    public Boolean check_collisions(Rectangle[] rects){
+
+
+        for(Rectangle r: rects){
+
+            if(get_bounds().intersects(r)){
+                return false;
+            }
+
+        }
+
+        return true;
+    }
+
+
 
 
 }
