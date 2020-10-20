@@ -3,11 +3,16 @@ package world;
 import world.objects.Cube;
 import world.objects.Grid;
 import world.objects.Point3D;
+import world.objects.Shape;
 
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.swing.*;
 import javax.swing.text.TabSet;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
@@ -15,147 +20,102 @@ public class World extends JPanel {
 
     Camera camera = new Camera(new Point3D(0,0,0));
 
+    ArrayList<Shape> objects = new ArrayList<>();
+    ArrayList<Point2D> points2D = new ArrayList<>();
 
-    ArrayList<Point2D> points = new ArrayList<>();
 
     public World(){
 
-        Cube cube = new Cube(2,1,1);
+        Cube cube = new Cube(5,1,1);
         Grid grid = new Grid(0,0,0);
 
-
-        for(Point3D point: grid.vertices){
-            System.out.println(point);
-
-            Point2D point2d;
-            if((point2d=project2D(point)) != null){
-                points.add(point2d);
-            }
-        }
-
-        for(Point3D point: cube.vertices){
-            System.out.println(point);
-
-            Point2D point2d;
-            if((point2d=project2D(point)) != null){
-                points.add(point2d);
-            }
-        }
+        objects.add(cube);
+        objects.add(grid);
 
 
-        /*
-        Point3D test_point = new Point3D(2,0,0);
-        points.add(project2D(test_point));
-        Point3D test_point1 = new Point3D(2,0,3);
-        points.add(project2D(test_point1));
-        Point3D test_point2 = new Point3D(2,1,2);
-        points.add(project2D(test_point2));
 
-         */
+        timer.start();
+        render();
+
+        addKeyListener(new WorldKeyListener());
+        setFocusable(true);
+
+
+
+
     }
 
 
-    public Point2D project2D(Point3D point){
-
-        /*
-
-           Step 1: Find vector of every point to camera
-                CAMERA_POINT - POINT
-                [2,3,1]
-
-           Step 2: Find x angle of each vector with respect to [1 0 0] + CAMERA_POINT
-
-                X_angle = ArcTan(Z/X)
-
-           Step 3: Find y angle of each vector with respect to [0 1 0] + CAMERA_POINT
-
-                Y_angle = ArcTan(Y/Z)
-
-           Step 4: Find the FOV of camera and calculate perspective for each of point inside this angle
+    protected Timer timer = new Timer(1000, new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
 
 
-         */
+
+        }
+    });
+
+    public class WorldKeyListener implements KeyListener {
 
 
-        Point3D new_vector = Point3D.subtract(point, camera.get_location());
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
 
 
-        int x = new_vector.getX();
-        int y = new_vector.getY();
-        int z = new_vector.getZ();
+            if(e.getKeyCode() == 87){ // KEY: W
+                camera.move_east(1);
+                render();
 
-        double theta_x = 0;
-        double theta_y = 0;
+            }else if(e.getKeyCode() == 83){ // KEY: S
+                camera.move_west(1);
+                render();
 
-        if(x < 0){
-            if(y <= 0){
-                //QUADRANT 3
-                theta_x = -180 + Math.toDegrees(Math.atan((double) y/x));
-            }else {
-                //QUADRANT 2
-                theta_x = 180 + Math.toDegrees(Math.atan((double) y/x));
+            }else if(e.getKeyCode() == 68){ // KEY: D
+                camera.move_south(1);
+                render();
+
+            }else if(e.getKeyCode() == 65){ // KEY: A
+                camera.move_north(1);
+                render();
+
+            }else if(e.getKeyCode() == 32){ // KEY: SPACE
+                camera.move_up(1);
+                render();
+
+            }else if(e.getKeyCode() == 16){ // KEY: SHIFT
+                camera.move_down(1);
+                render();
             }
 
-        }else if (x == 0) {
-            theta_x = 90 * Math.signum(y);
-
-        }else {
-            theta_x = Math.toDegrees(Math.atan((double) y/x));
         }
 
+        @Override
+        public void keyReleased(KeyEvent e) {
 
-        // Calculate y degree
-        if(x < 0){
-            if(z <= 0){
-                //QUADRANT 3
-                theta_y = -180 + Math.toDegrees(Math.atan((double) z/x));
-            }else {
-                //QUADRANT 2
-                theta_y = 180 + Math.toDegrees(Math.atan((double) z/x));
+        }
+    }
+
+
+
+    public void render(){
+
+        points2D.clear();
+
+        for (Shape object: objects){
+            for(Point3D point: object.getPoints()){
+                Point2D point2d;
+                if((point2d=camera.project2D(point)) != null){
+                    points2D.add(point2d);
+                }
             }
-
-        }else if (x == 0) {
-            theta_y = 90 * Math.signum(z);
-
-        }else {
-            theta_y = Math.toDegrees(Math.atan((double) z/x));
         }
 
-
-
-
-        /*
-
-        NEED A BETTER SYSTEM OF ADDING ANGLES
-        double theta_x = Math.atan((double) y/x);
-        theta_x = Math.toDegrees(theta_x) * x / Math.abs(x);
-        //System.out.println(theta_x);
-        if(y < 0) {
-            theta_x += (180 - (2*Math.abs(theta_x))) * (theta_x / Math.abs(theta_x));
-        }
-
-
-        double theta_y = Math.atan((double) z/y);
-        theta_y = Math.toDegrees(theta_y) * y / Math.abs(y);
-        //System.out.println(theta_y);
-        if(x < 0){
-            theta_y += (180 - (2*Math.abs(theta_y))) * (theta_y / Math.abs(theta_y));
-        }
-        */
-
-        System.out.println("THETA_X: " + theta_x);
-        System.out.println("THETA_Y: " + theta_y);
-
-        if(camera.FOVContainsTheta(theta_x, theta_y)){
-            System.out.println("true");
-            return camera.projectFromTheta(theta_x,theta_y);
-        }else {
-            System.out.println("false");
-        }
-
-
-        return null;
-
+        repaint();
     }
 
 
@@ -173,9 +133,8 @@ public class World extends JPanel {
 
     }
 
-    public void draw_point(Point point, Graphics2D g2d){
-       g2d.fillOval(point.x, point.y, 10, 10);
-    }
+
+
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -183,7 +142,7 @@ public class World extends JPanel {
 
         Graphics2D g2d = (Graphics2D) g;
 
-        for(Point2D point: points){
+        for(Point2D point: points2D){
             draw_scaled_point(point, g2d);
         }
 

@@ -6,6 +6,8 @@ public class Shape {
     int y;
     int z;
 
+    public Point3D[] vertices;
+
     public Shape(int x, int y, int z){
         this.x = x;
         this.y = y;
@@ -24,6 +26,10 @@ public class Shape {
 
     public int getZ(){
         return z;
+    }
+
+    public Point3D[] getPoints(){
+        return vertices;
     }
 
 
