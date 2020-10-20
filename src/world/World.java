@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class World extends JPanel {
 
-    Camera camera = new Camera();
+    Camera camera = new Camera(new Point3D(0,0,0));
 
 
     ArrayList<Point2D> points = new ArrayList<>();
@@ -21,7 +21,17 @@ public class World extends JPanel {
     public World(){
 
         Cube cube = new Cube(2,1,1);
-        //Grid grid = new Grid(0,0,0);
+        Grid grid = new Grid(0,0,0);
+
+
+        for(Point3D point: grid.vertices){
+            System.out.println(point);
+
+            Point2D point2d;
+            if((point2d=project2D(point)) != null){
+                points.add(point2d);
+            }
+        }
 
         for(Point3D point: cube.vertices){
             System.out.println(point);
@@ -32,9 +42,16 @@ public class World extends JPanel {
             }
         }
 
-        Point3D test_point = new Point3D(-2,-2,-2);
-        //project2D(test_point);
 
+        /*
+        Point3D test_point = new Point3D(2,0,0);
+        points.add(project2D(test_point));
+        Point3D test_point1 = new Point3D(2,0,3);
+        points.add(project2D(test_point1));
+        Point3D test_point2 = new Point3D(2,1,2);
+        points.add(project2D(test_point2));
+
+         */
     }
 
 
@@ -67,6 +84,49 @@ public class World extends JPanel {
         int y = new_vector.getY();
         int z = new_vector.getZ();
 
+        double theta_x = 0;
+        double theta_y = 0;
+
+        if(x < 0){
+            if(y <= 0){
+                //QUADRANT 3
+                theta_x = -180 + Math.toDegrees(Math.atan((double) y/x));
+            }else {
+                //QUADRANT 2
+                theta_x = 180 + Math.toDegrees(Math.atan((double) y/x));
+            }
+
+        }else if (x == 0) {
+            theta_x = 90 * Math.signum(y);
+
+        }else {
+            theta_x = Math.toDegrees(Math.atan((double) y/x));
+        }
+
+
+        // Calculate y degree
+        if(x < 0){
+            if(z <= 0){
+                //QUADRANT 3
+                theta_y = -180 + Math.toDegrees(Math.atan((double) z/x));
+            }else {
+                //QUADRANT 2
+                theta_y = 180 + Math.toDegrees(Math.atan((double) z/x));
+            }
+
+        }else if (x == 0) {
+            theta_y = 90 * Math.signum(z);
+
+        }else {
+            theta_y = Math.toDegrees(Math.atan((double) z/x));
+        }
+
+
+
+
+        /*
+
+        NEED A BETTER SYSTEM OF ADDING ANGLES
         double theta_x = Math.atan((double) y/x);
         theta_x = Math.toDegrees(theta_x) * x / Math.abs(x);
         //System.out.println(theta_x);
@@ -81,10 +141,10 @@ public class World extends JPanel {
         if(x < 0){
             theta_y += (180 - (2*Math.abs(theta_y))) * (theta_y / Math.abs(theta_y));
         }
+        */
 
-
-        System.out.println(theta_x);
-        System.out.println(theta_y);
+        System.out.println("THETA_X: " + theta_x);
+        System.out.println("THETA_Y: " + theta_y);
 
         if(camera.FOVContainsTheta(theta_x, theta_y)){
             System.out.println("true");

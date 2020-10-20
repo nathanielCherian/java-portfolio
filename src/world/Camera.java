@@ -21,9 +21,9 @@ public class Camera {
     public float[] range_FOVX = new float[2];
     public float[] range_FOVY = new float[2];
 
-    public Camera(){
+    public Camera(Point3D point){
 
-        this.camera_point = new Point3D(0,0,0);
+        this.camera_point = point;
         this.fovx = 0; //starting looking down X-axis
         this.fovy = 0;
 
