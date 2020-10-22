@@ -27,6 +27,8 @@ public class Portfolio extends JFrame{
 
     JButton aimboost_button = new JButton("aimboost");
     JButton calculator_button = new JButton("calculator");
+    JButton game_button = new JButton("run game");
+    JButton world_button = new JButton("3D World");
 
 
     int r = 100;
@@ -106,6 +108,17 @@ public class Portfolio extends JFrame{
             CalculatorUI.main(null);
         });
         add(calculator_button);
+
+        game_button.addActionListener(e -> {
+            game.Home.main(null);
+        });
+        add(game_button);
+
+        world_button.addActionListener(e -> {
+            world.Home.main(null);
+        });
+        add(world_button);
+
 
 
 
