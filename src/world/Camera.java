@@ -28,15 +28,37 @@ public class Camera {
         this.fovy = 0;
 
 
-        range_FOVX[0] = fovx - half_FOVX;
-        range_FOVX[1] = fovx + half_FOVX;
 
-        range_FOVY[0] = fovy - half_FOVY;
-        range_FOVY[1] = fovy + half_FOVX;
+        changeXFOV(0);
+        changeYFOV(0);
 
 
     }
 
+
+    public void changeXFOV(float degs){
+        this.fovx = number_to_system(this.fovx + degs);
+        range_FOVX[0] = number_to_system(fovx - half_FOVX);
+        range_FOVX[1] = number_to_system(fovx + half_FOVX);
+
+        //System.out.println(fovx + " " + range_FOVX[0] + " " + range_FOVX[1]);
+    }
+
+    public void changeYFOV(float degs){
+        this.fovy = number_to_system(this.fovy + degs);
+        range_FOVY[0] = number_to_system(fovy - half_FOVY);
+        range_FOVY[1] = number_to_system(fovy + half_FOVY);
+    }
+
+    public float number_to_system(float num){
+        float diff_num = Math.abs(num) % 180;
+        if(diff_num % 180 > 0){
+            num = -num + (2*diff_num*Math.signum(num));
+            return num;
+        }
+
+        return num;
+    }
 
     public void move_east(int steps){
         camera_point.setX(camera_point.getX()+steps);
@@ -66,6 +88,26 @@ public class Camera {
     public Boolean FOVContainsTheta(double theta_x, double theta_y){
 
         /* ranges from -180 to +180 */
+
+
+        /*
+        theta_x += 180;
+        theta_y += 180;
+
+        float x1 = range_FOVX [0] + 180;
+        float x2 = range_FOVX [1] + 180;
+        float y1 = range_FOVY [0] + 180;
+        float y2 = range_FOVY [1] + 180;
+
+        if(theta_x >= x1 && theta_x <= x2){
+            if(theta_y >= y1 && theta_y <= y2){
+                return true;
+            }
+        }
+
+
+         */
+
 
         if(theta_x >= range_FOVX[0] && theta_x <= range_FOVX[1]){
             if(theta_y >= range_FOVY[0] && theta_y <= range_FOVY[1]){

@@ -66,31 +66,50 @@ public class World extends JPanel {
         @Override
         public void keyPressed(KeyEvent e) {
 
-
-            if(e.getKeyCode() == 87){ // KEY: W
+            int keycode = e.getKeyCode();
+            if(keycode == 87){ // KEY: W
                 camera.move_east(1);
                 render();
 
-            }else if(e.getKeyCode() == 83){ // KEY: S
+            }else if(keycode == 83){ // KEY: S
                 camera.move_west(1);
                 render();
 
-            }else if(e.getKeyCode() == 68){ // KEY: D
+            }else if(keycode == 68){ // KEY: D
                 camera.move_south(1);
                 render();
 
-            }else if(e.getKeyCode() == 65){ // KEY: A
+            }else if(keycode == 65){ // KEY: A
                 camera.move_north(1);
                 render();
 
-            }else if(e.getKeyCode() == 32){ // KEY: SPACE
+            }else if(keycode == 32){ // KEY: SPACE
                 camera.move_up(1);
                 render();
 
-            }else if(e.getKeyCode() == 16){ // KEY: SHIFT
+            }else if(keycode == 16){ // KEY: SHIFT
                 camera.move_down(1);
                 render();
+
+            }else if(keycode == 37) { //KEY: LEFT_ARROW
+                camera.changeXFOV(5);
+                render();
+
+            }else if(keycode == 38){ //KEY: TOP_ARROW
+                camera.changeYFOV(5);
+                render();
+
+            }else if(keycode == 39){ //KEY: RIGHT_ARROW
+                camera.changeXFOV(-5);
+                render();
+
+            }else if(keycode == 40){ //KEY: DOWN_ARROW
+                camera.changeYFOV(-5);
+                render();
+
             }
+
+
 
         }
 
