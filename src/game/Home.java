@@ -3,6 +3,7 @@ package game;
 import javax.swing.*;
 import java.awt.*;
 
+//To play: WASD to move, Space to shoot
 public class Home extends JFrame {
 
     public static void main(String[] args){

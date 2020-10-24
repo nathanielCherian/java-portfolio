@@ -5,6 +5,7 @@ import game.Board;
 import javax.swing.*;
 import java.awt.*;
 
+//Controls: WASD for X-Axis, Shift/Space for Y-Axis
 public class Home extends JFrame {
 
     public static void main(String[] args){
