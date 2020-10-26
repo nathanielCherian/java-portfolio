@@ -1,5 +1,7 @@
 package world.objects;
 
+import java.security.PublicKey;
+
 public class Point3D {
 
     int x;
@@ -15,6 +17,7 @@ public class Point3D {
     public String toString(){
         return "Point3D["+getX()+", "+getY()+", "+getZ()+"] ";
     }
+    public String toCleanString(){return  "X: "+getX()+ "  Y: " + getY() + "  Z: " + getZ();}
 
     public static Point3D subtract(Point3D point1, Point3D point2){
         return new Point3D((point1.x - point2.x), (point1.y - point2.y), (point1.z - point2.z));
