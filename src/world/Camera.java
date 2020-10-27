@@ -22,6 +22,9 @@ public class Camera {
     public float[] range_FOVX = new float[2];
     public float[] range_FOVY = new float[2];
 
+
+    public double SPEED = 0.5;
+
     public Camera(Point3D point){
 
         this.camera_point = point;
@@ -64,55 +67,40 @@ public class Camera {
     }
 
 
-    public void move_east(int steps){
-        camera_point.setX(camera_point.getX()+steps);
+    public void move_east(){ camera_point.setX(camera_point.getX()+SPEED); }
+
+    public void move_west(){
+        camera_point.setX(camera_point.getX()-SPEED);
     }
 
-    public void move_west(int steps){
-        camera_point.setX(camera_point.getX()-steps);
+    public void move_north(){ camera_point.setY(camera_point.getY()+SPEED); }
+
+    public void move_south(){
+        camera_point.setY(camera_point.getY()-SPEED);
     }
 
-    public void move_north(int steps){
-        camera_point.setY(camera_point.getY()+steps);
+    public void move_up(){
+        camera_point.setZ(camera_point.getZ()+SPEED);
     }
 
-    public void move_south(int steps){
-        camera_point.setY(camera_point.getY()-steps);
+    public void move_down(){
+        camera_point.setZ(camera_point.getZ()-SPEED);
     }
 
-    public void move_up(int steps){
-        camera_point.setZ(camera_point.getZ()+steps);
-    }
 
-    public void move_down(int steps){
-        camera_point.setZ(camera_point.getZ()-steps);
-    }
 
 
     public Boolean FOVContainsTheta(double theta_x, double theta_y){
 
         /* ranges from -180 to +180 */
 
-        float x1 = range_FOVX [0] + 180;
-        float x2 = range_FOVX [1] + 180;
-        theta_x += 180;
 
-        float y1 = range_FOVY [0];
-        float y2 = range_FOVY [1];
-
-        /*
-        if(Math.abs(theta_y) != 90){
-            theta_y = theta_y % 90;
-        }
-        */
-
-        System.out.println("THETA_X: " + theta_x + "   " + x1 + " to " +x2);
-        System.out.println("THETA_Y: " + theta_y + "   " + y1 + " to " +y2);
-
+        System.out.println("THETA_X: " + theta_x + "   " + range_FOVX[0] + " to " +range_FOVX[1]);
+        System.out.println("THETA_Y: " + theta_y + "   " + range_FOVY[0] + " to " +range_FOVY[1]);
 
 
         if(isWithinX(theta_x)){
-            if(theta_y >= range_FOVY[0] && theta_y <= range_FOVY[1]){
+            if(isWithinY(theta_y)){
                 System.out.println("TRUE");
                 return true;
             }
@@ -126,7 +114,7 @@ public class Camera {
 
 
     public boolean isWithinX(double theta){
-
+        theta += 180;
         if(range_FOVX[0] + 180 < range_FOVX[1] + 180){
             if(theta >= range_FOVX[0]+ 180 && theta <= range_FOVX[1]+ 180){
                 return true;
@@ -140,7 +128,21 @@ public class Camera {
         return false;
     }
 
+    public boolean isWithinY(double theta){
 
+        theta += 180;
+        if(range_FOVY[0] + 180 < range_FOVY[1] + 180){
+            if(theta >= range_FOVY[0]+ 180 && theta <= range_FOVY[1]+ 180){
+                return true;
+            }
+        }else {
+            if(theta <= range_FOVY[1] + 180 || theta >= range_FOVY[0]+ 180){
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 
     public GPoint projectFromTheta(double theta_x, double theta_y){
@@ -164,8 +166,6 @@ public class Camera {
         return new GPoint(x,y);
 
     }
-
-
 
 
     public GPoint project2D(Point3D point){
@@ -193,9 +193,9 @@ public class Camera {
         Point3D new_vector = Point3D.subtract(point, get_location());
 
 
-        int x = new_vector.getX();
-        int y = new_vector.getY();
-        int z = new_vector.getZ();
+        double x = new_vector.getX();
+        double y = new_vector.getY();
+        double z = new_vector.getZ();
 
         double theta_x = 0;
         double theta_y = 0;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Grid extends Shape{
 
 
-    public Grid(int x, int y, int z) {
+    public Grid(double x, double y, double z) {
         super(x, y, z);
 
 

@@ -28,11 +28,13 @@ public class World extends JPanel {
     public World(){
 
 
-        Cube cube = new Cube(5,1,1);
+
+        Cube cube = new Cube(5,0.5,1);
         cube.setPoint_color(new Color(39, 179, 30));
         objects.add(cube);
 
         Cube cube1 = new Cube(5,-3,1);
+        cube1.setPoint_color(new Color(11, 44, 212));
         objects.add(cube1);
 
         Grid grid = new Grid(0,0,0);
@@ -87,27 +89,27 @@ public class World extends JPanel {
 
             int keycode = e.getKeyCode();
             if(keycode == 87){ // KEY: W
-                camera.move_east(1);
+                camera.move_east();
                 render();
 
             }else if(keycode == 83){ // KEY: S
-                camera.move_west(1);
+                camera.move_west();
                 render();
 
             }else if(keycode == 68){ // KEY: D
-                camera.move_south(1);
+                camera.move_south();
                 render();
 
             }else if(keycode == 65){ // KEY: A
-                camera.move_north(1);
+                camera.move_north();
                 render();
 
             }else if(keycode == 32){ // KEY: SPACE
-                camera.move_up(1);
+                camera.move_up();
                 render();
 
             }else if(keycode == 16){ // KEY: SHIFT
-                camera.move_down(1);
+                camera.move_down();
                 render();
 
             }else if(keycode == 37) { //KEY: LEFT_ARROW

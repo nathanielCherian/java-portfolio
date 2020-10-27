@@ -2,7 +2,7 @@ package world.objects;
 
 public class TestShape extends Shape{
 
-    public TestShape(int x, int y, int z) {
+    public TestShape(double x, double y, double z) {
         super(x, y, z);
 
         vertices = new Point3D[2];

@@ -4,22 +4,22 @@ import java.awt.*;
 
 public class Shape {
 
-    int x;
-    int y;
-    int z;
+    double x;
+    double y;
+    double z;
 
     public Point3D[] vertices;
 
     int point_size = 10;
     Color point_color = new Color(0,0,0);
 
-    public Shape(int x, int y, int z){
+    public Shape(double x, double y, double z){
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
-    public Shape(int x, int y, int z, int ps, Color c){
+    public Shape(double x, double y, double z, int ps, Color c){
         this.x = x;
         this.y = y;
         this.z = z;
@@ -28,15 +28,15 @@ public class Shape {
         this.point_color = c;
     }
 
-    public int getX(){
+    public double getX(){
         return x;
     }
 
-    public int getY(){
+    public double getY(){
         return y;
     }
 
-    public int getZ(){
+    public double getZ(){
         return z;
     }
 

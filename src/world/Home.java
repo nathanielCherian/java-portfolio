@@ -20,7 +20,7 @@ public class Home extends JFrame {
 
     public Home(){
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setPreferredSize(new Dimension(700,700));
+        setPreferredSize(new Dimension(1000,1000));
 
 
         World world = new World();
