@@ -1,36 +1,66 @@
 package world.objects;
 
+import java.awt.*;
+
 public class Shape {
 
-    int x;
-    int y;
-    int z;
+    double x;
+    double y;
+    double z;
 
     public Point3D[] vertices;
 
-    public Shape(int x, int y, int z){
+    int point_size = 10;
+    Color point_color = new Color(0,0,0);
+
+    public Shape(double x, double y, double z){
         this.x = x;
         this.y = y;
         this.z = z;
     }
 
+    public Shape(double x, double y, double z, int ps, Color c){
+        this.x = x;
+        this.y = y;
+        this.z = z;
 
+        this.point_size = ps;
+        this.point_color = c;
+    }
 
-    public int getX(){
+    public double getX(){
         return x;
     }
 
-    public int getY(){
+    public double getY(){
         return y;
     }
 
-    public int getZ(){
+    public double getZ(){
         return z;
     }
 
     public Point3D[] getPoints(){
         return vertices;
     }
+
+
+    public int getPoint_size(){
+        return point_size;
+    }
+
+    public Color getPoint_color(){
+        return point_color;
+    }
+
+    public void setPoint_size(int ps){
+        point_size = ps;
+    }
+
+    public void setPoint_color(Color c){
+        point_color = c;
+    }
+
 
 
 

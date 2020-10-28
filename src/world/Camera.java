@@ -1,5 +1,6 @@
 package world;
 
+import world.objects.GPoint;
 import world.objects.Point3D;
 
 import java.awt.*;
@@ -21,6 +22,9 @@ public class Camera {
     public float[] range_FOVX = new float[2];
     public float[] range_FOVY = new float[2];
 
+
+    public double SPEED = 0.5;
+
     public Camera(Point3D point){
 
         this.camera_point = point;
@@ -32,7 +36,6 @@ public class Camera {
         changeXFOV(0);
         changeYFOV(0);
 
-
     }
 
 
@@ -41,13 +44,16 @@ public class Camera {
         range_FOVX[0] = number_to_system(fovx - half_FOVX);
         range_FOVX[1] = number_to_system(fovx + half_FOVX);
 
-        //System.out.println(fovx + " " + range_FOVX[0] + " " + range_FOVX[1]);
     }
 
     public void changeYFOV(float degs){
         this.fovy = number_to_system(this.fovy + degs);
         range_FOVY[0] = number_to_system(fovy - half_FOVY);
         range_FOVY[1] = number_to_system(fovy + half_FOVY);
+    }
+
+    public String getFOVString(){
+        return "fovX: " + range_FOVX[0] + " " + range_FOVX[1];
     }
 
     public float number_to_system(float num){
@@ -60,29 +66,28 @@ public class Camera {
         return num;
     }
 
-    public void move_east(int steps){
-        camera_point.setX(camera_point.getX()+steps);
+
+    public void move_east(){ camera_point.setX(camera_point.getX()+SPEED); }
+
+    public void move_west(){
+        camera_point.setX(camera_point.getX()-SPEED);
     }
 
-    public void move_west(int steps){
-        camera_point.setX(camera_point.getX()-steps);
+    public void move_north(){ camera_point.setY(camera_point.getY()+SPEED); }
+
+    public void move_south(){
+        camera_point.setY(camera_point.getY()-SPEED);
     }
 
-    public void move_north(int steps){
-        camera_point.setY(camera_point.getY()+steps);
+    public void move_up(){
+        camera_point.setZ(camera_point.getZ()+SPEED);
     }
 
-    public void move_south(int steps){
-        camera_point.setY(camera_point.getY()-steps);
+    public void move_down(){
+        camera_point.setZ(camera_point.getZ()-SPEED);
     }
 
-    public void move_up(int steps){
-        camera_point.setZ(camera_point.getZ()+steps);
-    }
 
-    public void move_down(int steps){
-        camera_point.setZ(camera_point.getZ()-steps);
-    }
 
 
     public Boolean FOVContainsTheta(double theta_x, double theta_y){
@@ -90,27 +95,48 @@ public class Camera {
         /* ranges from -180 to +180 */
 
 
-        /*
-        theta_x += 180;
-        theta_y += 180;
+        System.out.println("THETA_X: " + theta_x + "   " + range_FOVX[0] + " to " +range_FOVX[1]);
+        System.out.println("THETA_Y: " + theta_y + "   " + range_FOVY[0] + " to " +range_FOVY[1]);
 
-        float x1 = range_FOVX [0] + 180;
-        float x2 = range_FOVX [1] + 180;
-        float y1 = range_FOVY [0] + 180;
-        float y2 = range_FOVY [1] + 180;
 
-        if(theta_x >= x1 && theta_x <= x2){
-            if(theta_y >= y1 && theta_y <= y2){
+        if(isWithinX(theta_x)){
+            if(isWithinY(theta_y)){
+                System.out.println("TRUE");
+                return true;
+            }
+        }
+        System.out.println("FALSE");
+
+
+        return false;
+
+    }
+
+
+    public boolean isWithinX(double theta){
+        theta += 180;
+        if(range_FOVX[0] + 180 < range_FOVX[1] + 180){
+            if(theta >= range_FOVX[0]+ 180 && theta <= range_FOVX[1]+ 180){
+                return true;
+            }
+        }else {
+            if(theta <= range_FOVX[1] + 180 || theta >= range_FOVX[0]+ 180){
                 return true;
             }
         }
 
+        return false;
+    }
 
-         */
+    public boolean isWithinY(double theta){
 
-
-        if(theta_x >= range_FOVX[0] && theta_x <= range_FOVX[1]){
-            if(theta_y >= range_FOVY[0] && theta_y <= range_FOVY[1]){
+        theta += 180;
+        if(range_FOVY[0] + 180 < range_FOVY[1] + 180){
+            if(theta >= range_FOVY[0]+ 180 && theta <= range_FOVY[1]+ 180){
+                return true;
+            }
+        }else {
+            if(theta <= range_FOVY[1] + 180 || theta >= range_FOVY[0]+ 180){
                 return true;
             }
         }
@@ -119,7 +145,7 @@ public class Camera {
     }
 
 
-    public Point2D projectFromTheta(double theta_x, double theta_y){
+    public GPoint projectFromTheta(double theta_x, double theta_y){
 
         /*
 
@@ -137,14 +163,12 @@ public class Camera {
 
         //System.out.println("X: " + Double.toString(x));
 
-        return new Point2D.Double(x,y);
+        return new GPoint(x,y);
 
     }
 
 
-
-
-    public Point2D project2D(Point3D point){
+    public GPoint project2D(Point3D point){
 
         /*
 
@@ -169,9 +193,9 @@ public class Camera {
         Point3D new_vector = Point3D.subtract(point, get_location());
 
 
-        int x = new_vector.getX();
-        int y = new_vector.getY();
-        int z = new_vector.getZ();
+        double x = new_vector.getX();
+        double y = new_vector.getY();
+        double z = new_vector.getZ();
 
         double theta_x = 0;
         double theta_y = 0;
@@ -193,9 +217,27 @@ public class Camera {
         }
 
 
+
+
+
+
+        double thrdside = Math.sqrt(x*x + y*y);
+        if(thrdside != 0){
+            theta_y = Math.toDegrees(Math.atan((double) z/thrdside));
+        }else {
+            if(z > 0){
+                theta_y = 90;
+            }else if(z < 0){
+                theta_y = -90;
+            }else{
+                theta_y = 0;
+            }
+        }
+
+        /*
         // Calculate y degree
         if(x < 0){
-            if(z <= 0){
+            if(z < 0){
                 //QUADRANT 3
                 theta_y = -180 + Math.toDegrees(Math.atan((double) z/x));
             }else {
@@ -209,16 +251,16 @@ public class Camera {
         }else {
             theta_y = Math.toDegrees(Math.atan((double) z/x));
         }
+        */
 
-
-        //System.out.println("THETA_X: " + theta_x);
-        //System.out.println("THETA_Y: " + theta_y);
 
         if(FOVContainsTheta(theta_x, theta_y)){
-            //System.out.println("true");
-            return projectFromTheta(theta_x,theta_y);
-        }else {
-            //System.out.println("false");
+
+            GPoint p = projectFromTheta(theta_x,theta_y);
+            System.out.println(p+"\n");
+            return p;
+        }else{
+
         }
 
 

@@ -2,7 +2,7 @@ package world.objects;
 
 public class Cube extends Shape{
 
-    public Cube(int x, int y, int z) {
+    public Cube(double x, double y, double z) {
         super(x, y, z); //left corner
 
         vertices = new Point3D[8];
