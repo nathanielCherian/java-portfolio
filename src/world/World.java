@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class World extends JPanel {
 
@@ -68,14 +70,63 @@ public class World extends JPanel {
     }
 
 
-    protected Timer timer = new Timer(1000, new ActionListener() {
+    protected Timer timer = new Timer(50, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+            for(int key: pressed_keys){
+                process_key(key);
+            }
+            render();
 
         }
     });
 
+    public void process_key(int keycode){
+
+        switch (keycode){
+            case 87: //W
+                camera.move_forward();
+                //camera.move_east();
+                break;
+            case 83: //S
+                //camera.move_west();
+                camera.move_backward();
+                break;
+            case 68: //D
+                //camera.move_south();
+                camera.move_right();
+                break;
+            case 65: //A
+                //camera.move_north();
+                camera.move_left();
+                break;
+            case 32:
+                camera.move_up();
+                break;
+            case 16:
+                camera.move_down();
+                break;
+            case 37:
+                camera.changeXFOV(5);
+                break;
+            case 38:
+                camera.changeYFOV(5);
+                break;
+            case 39:
+                camera.changeXFOV(-5);
+                break;
+            case 40:
+                camera.changeYFOV(-5);
+                break;
+            default:
+                break;
+        }
+
+    }
+
+
+    Set<Integer> pressed_keys = new HashSet<>();
     public class WorldKeyListener implements KeyListener {
 
 
@@ -88,55 +139,14 @@ public class World extends JPanel {
         public void keyPressed(KeyEvent e) {
 
             int keycode = e.getKeyCode();
-            if(keycode == 87){ // KEY: W
-                camera.move_east();
-                render();
-
-            }else if(keycode == 83){ // KEY: S
-                camera.move_west();
-                render();
-
-            }else if(keycode == 68){ // KEY: D
-                camera.move_south();
-                render();
-
-            }else if(keycode == 65){ // KEY: A
-                camera.move_north();
-                render();
-
-            }else if(keycode == 32){ // KEY: SPACE
-                camera.move_up();
-                render();
-
-            }else if(keycode == 16){ // KEY: SHIFT
-                camera.move_down();
-                render();
-
-            }else if(keycode == 37) { //KEY: LEFT_ARROW
-                camera.changeXFOV(5);
-                render();
-
-            }else if(keycode == 38){ //KEY: TOP_ARROW
-                camera.changeYFOV(5);
-                render();
-
-            }else if(keycode == 39){ //KEY: RIGHT_ARROW
-                camera.changeXFOV(-5);
-                render();
-
-            }else if(keycode == 40){ //KEY: DOWN_ARROW
-                camera.changeYFOV(-5);
-                render();
-
-            }
-
-
+            pressed_keys.add(keycode);
 
         }
 
         @Override
         public void keyReleased(KeyEvent e) {
-
+            int keycode = e.getKeyCode();
+            pressed_keys.remove(keycode);
         }
     }
 

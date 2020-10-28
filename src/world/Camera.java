@@ -67,16 +67,33 @@ public class Camera {
     }
 
 
-    public void move_east(){ camera_point.setX(camera_point.getX()+SPEED); }
 
-    public void move_west(){
-        camera_point.setX(camera_point.getX()-SPEED);
+    public void move_forward(){
+
+        camera_point.setX(camera_point.getX()+Math.cos(Math.toRadians(fovx))*SPEED);
+        camera_point.setY(camera_point.getY()+Math.sin(Math.toRadians(fovx))*SPEED);
+
     }
 
-    public void move_north(){ camera_point.setY(camera_point.getY()+SPEED); }
+    public void move_backward(){
 
-    public void move_south(){
-        camera_point.setY(camera_point.getY()-SPEED);
+        camera_point.setX(camera_point.getX()-Math.cos(Math.toRadians(fovx))*SPEED);
+        camera_point.setY(camera_point.getY()-Math.sin(Math.toRadians(fovx))*SPEED);
+
+    }
+
+    public void move_left(){
+
+        camera_point.setX(camera_point.getX()+Math.cos(Math.toRadians(fovx+90))*SPEED);
+        camera_point.setY(camera_point.getY()+Math.sin(Math.toRadians(fovx+90))*SPEED);
+
+    }
+
+    public void move_right(){
+
+        camera_point.setX(camera_point.getX()+Math.cos(Math.toRadians(fovx-90))*SPEED);
+        camera_point.setY(camera_point.getY()+Math.sin(Math.toRadians(fovx-90))*SPEED);
+
     }
 
     public void move_up(){
@@ -87,6 +104,26 @@ public class Camera {
         camera_point.setZ(camera_point.getZ()-SPEED);
     }
 
+    /*
+    OLD MOVE METHODS
+    public void move_east(){
+        camera_point.setX(camera_point.getX()+SPEED);
+
+    }
+
+    public void move_west(){
+        camera_point.setX(camera_point.getX()-SPEED);
+    }
+
+    public void move_north(){
+        camera_point.setY(camera_point.getY()+SPEED);
+    }
+
+    public void move_south(){
+        camera_point.setY(camera_point.getY()-SPEED);
+    }
+
+     */
 
 
 
@@ -95,23 +132,23 @@ public class Camera {
         /* ranges from -180 to +180 */
 
 
+        /*
         System.out.println("THETA_X: " + theta_x + "   " + range_FOVX[0] + " to " +range_FOVX[1]);
         System.out.println("THETA_Y: " + theta_y + "   " + range_FOVY[0] + " to " +range_FOVY[1]);
-
+           */
 
         if(isWithinX(theta_x)){
             if(isWithinY(theta_y)){
-                System.out.println("TRUE");
+                //System.out.println("TRUE");
                 return true;
             }
         }
-        System.out.println("FALSE");
+        //System.out.println("FALSE");
 
 
         return false;
 
     }
-
 
     public boolean isWithinX(double theta){
         theta += 180;
@@ -143,6 +180,7 @@ public class Camera {
 
         return false;
     }
+
 
 
     public GPoint projectFromTheta(double theta_x, double theta_y){
@@ -257,7 +295,6 @@ public class Camera {
         if(FOVContainsTheta(theta_x, theta_y)){
 
             GPoint p = projectFromTheta(theta_x,theta_y);
-            System.out.println(p+"\n");
             return p;
         }else{
 
@@ -267,6 +304,8 @@ public class Camera {
         return null;
 
     }
+
+
 
 
     public Point3D get_location(){
