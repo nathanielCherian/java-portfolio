@@ -32,12 +32,15 @@ public class World extends JPanel {
 
 
         Cube cube = new Cube(5,0.5,1);
-        cube.setPoint_color(new Color(39, 179, 30));
+        cube.set_color(new Color(39, 179, 30));
         objects.add(cube);
 
         Cube cube1 = new Cube(5,-3,1);
-        cube1.setPoint_color(new Color(11, 44, 212));
+        cube1.set_color(new Color(11, 44, 212));
         objects.add(cube1);
+
+        Pyramid pyramid = new Pyramid(3,3,3);
+        objects.add(pyramid);
 
         Grid grid = new Grid(0,0,0);
         objects.add(grid);
@@ -74,10 +77,12 @@ public class World extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+
             for(int key: pressed_keys){
                 process_key(key);
             }
             render();
+
 
         }
     });
@@ -158,8 +163,8 @@ public class World extends JPanel {
 
         for (Shape object: objects){
 
-            int ps = object.getPoint_size();
-            Color c = object.getPoint_color();
+            int ps = object.get_point_size();
+            Color c = object.get_color();
 
             for(Point3D point: object.getPoints()){
                 GPoint point2d;

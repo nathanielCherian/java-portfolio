@@ -21,7 +21,6 @@ public class Grid extends Shape{
 
         this.vertices = vers.toArray(new Point3D[vers.size()]);
 
-
-        setPoint_size(5);
+        set_point_size(5);
     }
 }

@@ -16,12 +16,7 @@ public class Cube extends Shape{
         vertices[6] = new Point3D(0,1,1);
         vertices[7] = new Point3D(1,1,1);
 
-
-        for(Point3D point: vertices){
-            point.x += x;
-            point.y += y;
-            point.z += z;
-        }
+        transform();
 
     }
 
