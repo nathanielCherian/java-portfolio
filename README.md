@@ -10,10 +10,10 @@ The whole portfolio can be launched by running main method within Main.java
 ## Contributers
 | GitHub Username | Person |
 | --- | --- |
-| @nathanielCherian | Nathaniel Cherian |
-| @tonyhieu | Anthony Vo |
-| @JettKim | Jett Kim |
-| @bennyherrick | Benjamin Herrick |
+| [@nathanielCherian](https://github.com/nathanielCherian) | Nathaniel Cherian |
+| [@tonyhieu](https://github.com/tonyhieu) | Anthony Vo |
+| [@JettKim](https://github.com/JettKim) | Jett Kim |
+| [@bennyherrick](https://github.com/bennyherrick) | Benjamin Herrick |
 
 ## Group Grading
 ### Goals for the week: 
