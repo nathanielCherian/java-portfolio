@@ -29,9 +29,9 @@ Click [here](https://github.com/JettKim/PortfolioTrio) for the alternate portfol
 | --- | --- | --- |
 | Nathan | Completed work on [3D World](https://github.com/nathanielCherian/java-portfolio/tree/master/src/world), made improvements | 25/25 |
 | Anthony | Finished [Hangman project](https://github.com/nathanielCherian/java-portfolio/tree/master/src/hangman), used MVC | 25/25 |
-| Jett | Created UI for Tic-Tac-Toe game and added his Calculator project | 25/25 |
-| Benny | Worked on journal for the week, but didn't code | 20/25 |
-| Brendan | Worked on journal for the week, but didn't code | 20/25 |
+| Jett | Created UI for [Tic-Tac-Toe game](https://github.com/nathanielCherian/java-portfolio/tree/master/out/production/java-portfolio/TicTacToeGame) and added his [Calculator](https://github.com/nathanielCherian/java-portfolio/tree/master/out/production/java-portfolio/calc) project | 25/25 |
+| Benny | Worked on journal for the week, but didn't code | 23/25 |
+| Brendan | Worked on journal for the week, but didn't code | 23/25 |
 
 ## Aimboost
 The aimboost game features random circles that spawn randomly and must be clicked with speed to be popped before they disappear.
@@ -39,7 +39,7 @@ The aimboost game features random circles that spawn randomly and must be clicke
 ## Calculator 
 Standard Calculator with extra functions
 
-<img align="center" src="media/calculator.jpg">
+<img align="center" src="media/calculator.PNG">
 
 
 ## Run Game
@@ -57,6 +57,11 @@ You can also use the arrow keys to change your field of view (looking left/right
 A version of hangman that you can play by yourself. Type a letter into the text field, check your letter, and see if you can guess the word!
 
 <img align="center" src="media/hangman.PNG">
+
+## Tic-Tac-Toe Game
+A recreation of Tic-Tac-Toe in JFrame. (Not working, only has a UI but no control code)
+
+<img align="center" src="media/tictactoe.PNG">
 
 ## To be completed...
 
