@@ -37,7 +37,7 @@ You can also use the arrow keys to change your field of view (looking left/right
 ## Hangman Game
 A version of hangman that you can play by yourself. Type a letter into the text field, check your letter, and see if you can guess the word!
 
-<img align="center" src="media/hangman.png">
+<img align="center" src="media/hangman.PNG">
 
 ## To be completed...
 
