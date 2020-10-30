@@ -90,7 +90,7 @@ public class HangmanUI extends JFrame {
     JTextField input = new JTextField("Enter a letter");
     JLabel shownWord = new JLabel("Word", SwingConstants.CENTER);
     JLabel shownLives = new JLabel("Lives: ", SwingConstants.CENTER);
-    JLabel wrongLetters = new JLabel("Letters Missed: ", SwingConstants.CENTER);
+    JLabel wrongLetters = new JLabel("Letters Missed:", SwingConstants.CENTER);
 
     //creating UI; View
     public HangmanUI() {
@@ -135,7 +135,7 @@ public class HangmanUI extends JFrame {
         shownLives.setFont(f);
         getContentPane().add(shownLives);
 
-        wrongLetters.setBounds(150, 250, 200, 50);
+        wrongLetters.setBounds(0, 250, 500, 50);
         wrongLetters.setFont(f);
         getContentPane().add(wrongLetters);
     }
