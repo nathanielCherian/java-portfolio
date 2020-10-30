@@ -5,7 +5,7 @@ Prerequisites:
 - Java JDK 15
 - Intellij IDE
 
-The whole portfolio can be launched by running main method within Main.java
+The whole portfolio can be launched by running main method within Main.java.
 
 ## Contributers
 | GitHub Username | Person |
@@ -14,6 +14,7 @@ The whole portfolio can be launched by running main method within Main.java
 | [@tonyhieu](https://github.com/tonyhieu) | Anthony Vo |
 | [@JettKim](https://github.com/JettKim) | Jett Kim |
 | [@bennyherrick](https://github.com/bennyherrick) | Benjamin Herrick |
+Click [here](https://github.com/JettKim/PortfolioTrio) for the alternate portfolio Jett, Benny, and Brendan used for their work the last few weeks.
 
 ## Group Grading
 ### Goals for the week: 
