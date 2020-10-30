@@ -7,6 +7,13 @@ Prerequisites:
 
 The whole portfolio can be launched by running main method within Main.java
 
+## Contributers
+| GitHub Username | Person |
+| --- | --- |
+| @nathanielCherian | Nathaniel Cherian |
+| @tonyhieu | Anthony Vo |
+| @JettKim | Jett Kim |
+
 ## Aimboost
 The aimboost game features random circles that spawn randomly and must be clicked with speed to be popped before they disappear.
 
@@ -27,6 +34,10 @@ You can also use the arrow keys to change your field of view (looking left/right
 
 <img align="center" src="media/3dworld.jpg">
 
+## Hangman Game
+A version of hangman that you can play by yourself. Type a letter into the text field, check your letter, and see if you can guess the word!
+
+<img align="center" src="media/hangman.png">
 
 ## To be completed...
 
@@ -36,5 +47,13 @@ You can also use the arrow keys to change your field of view (looking left/right
 - [x] Create projection algorithm for world
 - [x] Allow full user mobility with swivel
 - [ ] Connect lines between points
-- [ ] Hangman game Control/GUI
+- [x] Hangman game Control/GUI
+
+## Group Grading
+### Goals for the week: 
+| Person(s) | Goals |
+| --- | --- |
+| Nathan | Further progress on 3D World project: The 3DWorld project will make use of MVC through the many different components of the game. The process of of projecting a 3D model onto a 2D space is one that works very well with MVC. Our Model is a systen of classes that each inherit/implement their basic components. To assisst with this we created a new "primative" called Point3D. Our Control is contained within the "Camera" class, which the player controls. This calculates the projects from our 3D world to a 2D plane. | Our View is summed up with a custom GPoint class that allows us to display these points easily to the user.
+| Anthony | Create basis for hangman game; use view to show letter selection, control to take in letters, model to connect the two |
+| Jett, Brendan, Benny | Properly display MVC with a tic-tac-toe game; view to select box, control for finding winner, model to connect the two |
 
