@@ -13,6 +13,7 @@ The whole portfolio can be launched by running main method within Main.java
 | @nathanielCherian | Nathaniel Cherian |
 | @tonyhieu | Anthony Vo |
 | @JettKim | Jett Kim |
+| @bennyherrick | Benjamin Herrick |
 
 ## Group Grading
 ### Goals for the week: 
@@ -26,9 +27,9 @@ The whole portfolio can be launched by running main method within Main.java
 | --- | --- | --- |
 | Nathan | Completed work on [3D World](https://github.com/nathanielCherian/java-portfolio/tree/master/src/world), made improvements | 25/25 |
 | Anthony | Finished [Hangman project](https://github.com/nathanielCherian/java-portfolio/tree/master/src/hangman), used MVC | 25/25 |
-| Jett | Created UI for Tic-Tac-Toe game | 25/25 |
-| Benny | Worked on journal for the week, but didn't code | 23/25 |
-| Brendan | Worked on journal for the week, but didn't code | 23/25 |
+| Jett | Created UI for Tic-Tac-Toe game and added his Calculator project | 25/25 |
+| Benny | Worked on journal for the week, but didn't code | 20/25 |
+| Brendan | Worked on journal for the week, but didn't code | 20/25 |
 
 ## Aimboost
 The aimboost game features random circles that spawn randomly and must be clicked with speed to be popped before they disappear.
