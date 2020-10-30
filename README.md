@@ -48,6 +48,7 @@ A version of hangman that you can play by yourself. Type a letter into the text 
 - [x] Allow full user mobility with swivel
 - [ ] Connect lines between points
 - [x] Hangman game Control/GUI
+- [ ] Complete Tic-Tac-Toe Game
 
 ## Group Grading
 ### Goals for the week: 
