@@ -1,5 +1,7 @@
 package world.objects;
 
+import world.primatives.Point3D;
+
 public class TestShape extends Shape{
 
     public TestShape(double x, double y, double z) {

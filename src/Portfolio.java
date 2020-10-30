@@ -1,6 +1,7 @@
 import app.Circle;
 import app.Home;
 import calc.CalculatorUI;
+import hangman.HangmanUI;
 
 import  javax.swing.JFrame;
 import javax.swing.*;
@@ -27,6 +28,7 @@ public class Portfolio extends JFrame{
 
     JButton aimboost_button = new JButton("aimboost");
     JButton calculator_button = new JButton("calculator");
+    JButton hangman_button = new JButton("hangman");
     JButton game_button = new JButton("run game");
     JButton world_button = new JButton("3D World");
 
@@ -119,7 +121,10 @@ public class Portfolio extends JFrame{
         });
         add(world_button);
 
-
+        hangman_button.addActionListener(e -> {
+            HangmanUI.main(null);
+        });
+        add(hangman_button);
 
 
 

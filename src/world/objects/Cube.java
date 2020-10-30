@@ -1,5 +1,7 @@
 package world.objects;
 
+import world.primatives.Point3D;
+
 public class Cube extends Shape{
 
     public Cube(double x, double y, double z) {

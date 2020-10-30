@@ -1,4 +1,4 @@
-package world.objects;
+package world.primatives;
 
 import java.awt.*;
 import java.awt.geom.Point2D;

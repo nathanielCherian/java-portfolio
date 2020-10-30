@@ -1,12 +1,12 @@
-package world.objects;
-
-import java.security.PublicKey;
+package world.primatives;
 
 public class Point3D {
 
-    double x;
-    double y;
-    double z;
+    public double x;
+    public double y;
+    public double z;
+
+    public GPoint gpoint = null;
 
     public Point3D(double x, double y, double z){
         this.x = x;
@@ -39,5 +39,7 @@ public class Point3D {
     public void setX(double x){this.x = x;}
     public void setY(double y){this.y = y;}
     public void setZ(double z){this.z = z;}
+
+
 
 }

@@ -1,5 +1,7 @@
 package world.objects;
 
+import world.primatives.Point3D;
+
 import java.awt.*;
 
 public class Shape {

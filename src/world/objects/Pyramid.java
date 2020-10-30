@@ -1,5 +1,7 @@
 package world.objects;
 
+import world.primatives.Point3D;
+
 public class Pyramid extends Shape{
 
     public Pyramid(double x, double y, double z) {

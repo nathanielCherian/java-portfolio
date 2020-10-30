@@ -1,5 +1,7 @@
 package world.objects;
 
+import world.primatives.Point3D;
+
 import java.util.ArrayList;
 
 public class Grid extends Shape{

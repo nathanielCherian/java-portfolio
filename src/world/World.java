@@ -2,10 +2,10 @@ package world;
 
 import world.objects.*;
 import world.objects.Shape;
+import world.primatives.GPoint;
+import world.primatives.Point3D;
 
-import javax.annotation.processing.SupportedSourceVersion;
 import javax.swing.*;
-import javax.swing.text.TabSet;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -53,9 +53,9 @@ public class World extends JPanel {
            */
 
 
+        render();
 
         timer.start();
-        render();
 
         addKeyListener(new WorldKeyListener());
         setFocusable(true);
@@ -168,10 +168,12 @@ public class World extends JPanel {
 
             for(Point3D point: object.getPoints()){
                 GPoint point2d;
+                point.gpoint = null;
                 if((point2d=camera.project2D(point)) != null){
                     point2d.setSize(ps);
                     point2d.setColor(c);
                     points2D.add(point2d);
+                    point.gpoint = point2d;
                 }
             }
         }
@@ -198,6 +200,8 @@ public class World extends JPanel {
 
         g2d.setColor(c);
         g2d.fillOval(x, y, r, r);
+        g2d.drawLine(half_width,half_height,x,y);
+
 
     }
 
@@ -209,6 +213,7 @@ public class World extends JPanel {
         super.paintComponent(g);
 
         Graphics2D g2d = (Graphics2D) g;
+
 
         for(GPoint point: points2D){
             draw_scaled_point(point, g2d);

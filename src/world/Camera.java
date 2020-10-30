@@ -1,10 +1,7 @@
 package world;
 
-import world.objects.GPoint;
-import world.objects.Point3D;
-
-import java.awt.*;
-import java.awt.geom.Point2D;
+import world.primatives.GPoint;
+import world.primatives.Point3D;
 
 public class Camera {
 
