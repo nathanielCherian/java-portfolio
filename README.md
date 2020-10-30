@@ -14,6 +14,22 @@ The whole portfolio can be launched by running main method within Main.java
 | @tonyhieu | Anthony Vo |
 | @JettKim | Jett Kim |
 
+## Group Grading
+### Goals for the week: 
+| Person(s) | Goals |
+| --- | --- |
+| Nathan | Further progress on 3D World project: The 3DWorld project will make use of MVC through the many different components of the game. The process of of projecting a 3D model onto a 2D space is one that works very well with MVC. Our Model is a systen of classes that each inherit/implement their basic components. To assisst with this we created a new "primative" called Point3D. Our Control is contained within the "Camera" class, which the player controls. This calculates the projects from our 3D world to a 2D plane. | Our View is summed up with a custom GPoint class that allows us to display these points easily to the user.
+| Anthony | Create basis for hangman game; use view to show letter selection, control to take in letters, model to connect the two |
+| Jett, Brendan, Benny | Properly display MVC with a tic-tac-toe game; view to select box, control for finding winner, model to connect the two |
+### Completion of goals:
+| Person | Work | Grade |
+| --- | --- | --- |
+| Nathan | Completed work on 3D World, made improvements | 25/25 |
+| Anthony | Finished Hangman project | 25/25 |
+| Jett | Created UI for Tic-Tac-Toe game | 25/25 |
+| Benny | Worked on journal for the week, but didn't code | 23/25 |
+| Brendan | Worked on journal for the week, but didn't code | 23/25 |
+
 ## Aimboost
 The aimboost game features random circles that spawn randomly and must be clicked with speed to be popped before they disappear.
 
@@ -49,19 +65,3 @@ A version of hangman that you can play by yourself. Type a letter into the text 
 - [ ] Connect lines between points
 - [x] Hangman game Control/GUI
 - [ ] Complete Tic-Tac-Toe Game
-
-## Group Grading
-### Goals for the week: 
-| Person(s) | Goals |
-| --- | --- |
-| Nathan | Further progress on 3D World project: The 3DWorld project will make use of MVC through the many different components of the game. The process of of projecting a 3D model onto a 2D space is one that works very well with MVC. Our Model is a systen of classes that each inherit/implement their basic components. To assisst with this we created a new "primative" called Point3D. Our Control is contained within the "Camera" class, which the player controls. This calculates the projects from our 3D world to a 2D plane. | Our View is summed up with a custom GPoint class that allows us to display these points easily to the user.
-| Anthony | Create basis for hangman game; use view to show letter selection, control to take in letters, model to connect the two |
-| Jett, Brendan, Benny | Properly display MVC with a tic-tac-toe game; view to select box, control for finding winner, model to connect the two |
-### Completion of goals:
-| Person | Work | Grade |
-| --- | --- | --- |
-| Nathan | Completed work on 3D World, made improvements | 25/25 |
-| Anthony | Finished Hangman project | 25/25 |
-| Jett | Created UI for Tic-Tac-Toe game | 25/25 |
-| Benny | Worked on journal for the week, but didn't code | 23/25 |
-| Brendan | Worked on journal for the week, but didn't code | 23/25 |
