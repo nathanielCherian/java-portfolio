@@ -24,8 +24,8 @@ The whole portfolio can be launched by running main method within Main.java
 ### Completion of goals:
 | Person | Work | Grade |
 | --- | --- | --- |
-| Nathan | Completed work on 3D World, made improvements | 25/25 |
-| Anthony | Finished Hangman project | 25/25 |
+| Nathan | Completed work on [3D World](https://github.com/nathanielCherian/java-portfolio/tree/master/src/world), made improvements | 25/25 |
+| Anthony | Finished [Hangman project](https://github.com/nathanielCherian/java-portfolio/tree/master/src/hangman), used MVC | 25/25 |
 | Jett | Created UI for Tic-Tac-Toe game | 25/25 |
 | Benny | Worked on journal for the week, but didn't code | 23/25 |
 | Brendan | Worked on journal for the week, but didn't code | 23/25 |
