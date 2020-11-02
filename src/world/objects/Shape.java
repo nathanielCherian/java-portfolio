@@ -50,6 +50,26 @@ public class Shape {
     }
 
 
+    public void draw_points(Graphics2D g2d, Dimension size){
+        int half_width = size.width /2;
+        int half_height = size.height /2;
+
+        int r = get_point_size();
+        Color c = get_color();
+
+        for(Point3D point: vertices){
+            if(point.gpoint != null){
+                int x = (int) ((half_width*point.gpoint.getX()) + half_width);
+                int y = (int) ((half_height*point.gpoint.getY()) + half_height);
+
+                g2d.setColor(c);
+                g2d.fillOval(x, y, r, r);
+            }
+        }
+    }
+
+
+
     public double getX(){
         return x;
     }
@@ -72,7 +92,6 @@ public class Shape {
         return vertices;
     }
 
-
     public int get_point_size(){
         return point_size;
     }
@@ -88,7 +107,6 @@ public class Shape {
     public void set_color(Color c){
         point_color = c;
     }
-
 
 
 

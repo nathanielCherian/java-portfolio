@@ -186,39 +186,19 @@ public class World extends JPanel {
 
 
 
-    public void draw_scaled_point(GPoint point, Graphics2D g2d){
-        Dimension size = getSize();
-
-        int half_width = size.width /2;
-        int half_height = size.height /2;
-
-        int x = (int) ((half_width*point.getX()) + half_width);
-        int y = (int) ((half_height*point.getY()) + half_height);
-
-        int r = point.size;
-        Color c = point.color;
-
-        g2d.setColor(c);
-        g2d.fillOval(x, y, r, r);
-        g2d.drawLine(half_width,half_height,x,y);
-
-
-    }
-
-
-
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         Graphics2D g2d = (Graphics2D) g;
 
+        for(Shape object: objects){
 
-        for(GPoint point: points2D){
-            draw_scaled_point(point, g2d);
+            object.draw_points(g2d, getSize());
+
         }
 
+        
 
     }
 }
