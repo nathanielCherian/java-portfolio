@@ -31,6 +31,7 @@ public class Portfolio extends JFrame{
     JButton hangman_button = new JButton("hangman");
     JButton game_button = new JButton("run game");
     JButton world_button = new JButton("3D World");
+    JButton tictactoe_button = new JButton("tictactoe");
 
 
     int r = 100;
@@ -126,7 +127,11 @@ public class Portfolio extends JFrame{
         });
         add(hangman_button);
 
-
+        tictactoe_button.addActionListener(e -> {
+            System.out.println("Tic-Tac-Toe");
+            TicTacToeGame.Home.main(null);
+        });
+        add(tictactoe_button);
 
         timer.start();
         pack();
