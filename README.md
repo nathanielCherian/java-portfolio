@@ -14,6 +14,7 @@ The whole portfolio can be launched by running main method within Main.java.
 | [@tonyhieu](https://github.com/tonyhieu) | Anthony Vo |
 | [@JettKim](https://github.com/JettKim) | Jett Kim |
 | [@bennyherrick](https://github.com/bennyherrick) | Benjamin Herrick |
+| [@brendan8503](https://github.com/brendan8503) | Brendan Trinh |
 
 Click [here](https://github.com/JettKim/PortfolioTrio) for the alternate portfolio Jett, Benny, and Brendan used for their work the last few weeks.
 
