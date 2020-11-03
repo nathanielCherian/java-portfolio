@@ -40,6 +40,8 @@ public class Shape {
 
     }
 
+
+    //Move object in lateral directions
     public void transform(double x, double y, double z){
         for(Point3D point: vertices){
             point.x += x;
@@ -48,6 +50,72 @@ public class Shape {
         }
 
     }
+
+
+    //Rotate object YAW
+    public void rotateAboutX(Point3D origin, double thetax){
+
+        thetax = Math.toRadians(thetax);
+
+        for(int i=0;i<vertices.length;i++){
+
+            Point3D vpoint = Point3D.subtract(vertices[i],origin);
+
+            double x = Math.cos(thetax)*vpoint.getX() + Math.sin(thetax)*vpoint.getY();
+            double y = -1*Math.sin(thetax)*vpoint.getX() + Math.cos(thetax)*vpoint.getY();
+            double z = vpoint.getZ();
+
+            Point3D nvpoint = new Point3D(x,y,z);
+
+            vertices[i] = Point3D.add(nvpoint,origin);
+
+        }
+
+    }
+
+    // Rotate object PITCH
+    public void rotateAboutZ(Point3D origin, double thetaz){
+
+        thetaz = Math.toRadians(thetaz);
+
+        for(int i=0;i<vertices.length; i++){
+
+            Point3D vpoint = Point3D.subtract(vertices[i],origin);
+
+            double x = vpoint.getX();
+            double y = Math.cos(thetaz)*vpoint.getY() + -1*Math.sin(thetaz)*vpoint.getZ();
+            double z = Math.sin(thetaz)*vpoint.getY() + Math.cos(thetaz)*vpoint.getZ();
+
+
+            Point3D nvpoint = new Point3D(x,y,z);
+            vertices[i] = Point3D.add(nvpoint,origin);
+
+        }
+
+    }
+
+    // Rotate object ROLL
+    public void rotateAboutY(Point3D origin, double thetay){
+
+        thetay = Math.toRadians(thetay);
+
+        for(int i=0;i<vertices.length; i++){
+
+            Point3D vpoint = Point3D.subtract(vertices[i],origin);
+
+            double x = Math.cos(thetay)*vpoint.getX() + -1*Math.sin(thetay)*vpoint.getZ();
+            double y = vpoint.getY();
+            double z = Math.sin(thetay)*vpoint.getX() + Math.cos(thetay)*vpoint.getZ();
+
+
+            Point3D nvpoint = new Point3D(x,y,z);
+            vertices[i] = Point3D.add(nvpoint,origin);
+
+        }
+
+    }
+
+
 
 
     public void draw_points(Graphics2D g2d, Dimension size){

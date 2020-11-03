@@ -31,7 +31,7 @@ public class World extends JPanel {
 
 
 
-        Cube cube = new Cube(5,0.5,1);
+        Cube cube = new Cube(5,1,1);
         cube.set_color(new Color(39, 179, 30));
         objects.add(cube);
 
@@ -73,10 +73,17 @@ public class World extends JPanel {
     }
 
 
+    double th = 0.0;
     protected Timer timer = new Timer(50, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+
+            objects.get(0).rotateAboutZ(new Point3D(0,1,1),th);
+            objects.get(0).rotateAboutX(new Point3D(0,1,1),th);
+            objects.get(0).rotateAboutY(new Point3D(0,1,1),th);
+
+            th += .01;
 
             for(int key: pressed_keys){
                 process_key(key);

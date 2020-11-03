@@ -23,6 +23,9 @@ public class Point3D {
         return new Point3D((point1.x - point2.x), (point1.y - point2.y), (point1.z - point2.z));
     }
 
+    public static Point3D add(Point3D point1, Point3D point2){
+        return new Point3D((point1.x + point2.x), (point1.y + point2.y), (point1.z + point2.z));
+    }
 
     public double getX(){
         return x;
