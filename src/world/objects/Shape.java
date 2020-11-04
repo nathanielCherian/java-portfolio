@@ -136,6 +136,38 @@ public class Shape {
         }
     }
 
+    public void draw_connections(Graphics2D g2d, Dimension size){
+        int half_width = size.width /2;
+        int half_height = size.height /2;
+
+        for (Point3D point: vertices){
+
+            if(point.gpoint != null && point.linked_points != null){
+
+                for (Point3D lpoint: point.linked_points){
+
+                    if (lpoint.gpoint != null){
+
+                        int x = (int) ((half_width*point.gpoint.getX()) + half_width);
+                        int y = (int) ((half_height*point.gpoint.getY()) + half_height);
+
+                        int x2 = (int) ((half_width*lpoint.gpoint.getX()) + half_width);
+                        int y2 = (int) ((half_height*lpoint.gpoint.getY()) + half_height);
+
+
+                        g2d.setStroke(new BasicStroke(5));
+                        g2d.drawLine(x, y, x2, y2);
+
+                    }
+
+                }
+
+            }
+        }
+
+
+    }
+
 
 
     public double getX(){

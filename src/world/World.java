@@ -78,12 +78,14 @@ public class World extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-
+            /*
             objects.get(0).rotateAboutZ(new Point3D(0,1,1),th);
             objects.get(0).rotateAboutX(new Point3D(0,1,1),th);
             objects.get(0).rotateAboutY(new Point3D(0,1,1),th);
 
             th += .01;
+            */
+
 
             for(int key: pressed_keys){
                 process_key(key);
@@ -202,6 +204,7 @@ public class World extends JPanel {
         for(Shape object: objects){
 
             object.draw_points(g2d, getSize());
+            object.draw_connections(g2d, getSize());
 
         }
 

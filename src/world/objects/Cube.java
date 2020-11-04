@@ -18,6 +18,15 @@ public class Cube extends Shape{
         vertices[6] = new Point3D(0,1,1);
         vertices[7] = new Point3D(1,1,1);
 
+
+        //ADDING CONNECTIONS
+        vertices[0].setLinked_points(new Point3D[] {vertices[1], vertices[2], vertices[3]});
+        vertices[1].setLinked_points(new Point3D[] {vertices[0], vertices[1], vertices[4]});
+        vertices[2].setLinked_points(new Point3D[] {vertices[0], vertices[6], vertices[4]});
+        vertices[6].setLinked_points(new Point3D[] {vertices[2], vertices[7], vertices[3]});
+        vertices[4].setLinked_points(new Point3D[] {vertices[7]});
+        vertices[5].setLinked_points(new Point3D[] {vertices[7], vertices[1], vertices[3]});
+
         transform();
 
     }
