@@ -6,6 +6,15 @@ public class Cube extends Shape{
 
     public Cube(double x, double y, double z) {
         super(x, y, z); //left corner
+        init();
+    }
+
+    public Cube(Point3D point) {
+        super(point); //left corner
+        init();
+    }
+
+    protected void init(){
 
         vertices = new Point3D[8];
 
@@ -28,7 +37,6 @@ public class Cube extends Shape{
         vertices[5].setLinked_points(new Point3D[] {vertices[7], vertices[1], vertices[3]});
 
         transform();
-
     }
 
 

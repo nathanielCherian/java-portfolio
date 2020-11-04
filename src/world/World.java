@@ -7,10 +7,8 @@ import world.primatives.Point3D;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -59,6 +57,8 @@ public class World extends JPanel {
 
         addKeyListener(new WorldKeyListener());
         setFocusable(true);
+
+        addMouseListener(new MouseClickListener());
 
 
 
@@ -140,12 +140,15 @@ public class World extends JPanel {
     }
 
 
+    String SHAPE_STATE = "CUBE";
+
     Set<Integer> pressed_keys = new HashSet<>();
     public class WorldKeyListener implements KeyListener {
 
 
         @Override
         public void keyTyped(KeyEvent e) {
+
 
         }
 
@@ -161,9 +164,77 @@ public class World extends JPanel {
         public void keyReleased(KeyEvent e) {
             int keycode = e.getKeyCode();
             pressed_keys.remove(keycode);
+
+
+            //I should make this better :(
+
+            switch (keycode){
+                case 49: // 1
+                    SHAPE_STATE = "CUBE";
+                    break;
+                case 50: // 2
+                    SHAPE_STATE = "PYRAMID";
+                    break;
+                default:
+                    break;
+
+            }
+
+            if(keycode == 88){
+                Shape object = new Shape(0,0,0);
+                switch (SHAPE_STATE){
+                    case "CUBE":
+                        object = new Cube(camera.camera_point.getX()+Math.cos(Math.toRadians(camera.fovx))*2, camera.camera_point.getY()+Math.sin(Math.toRadians(camera.fovx))*2, camera.camera_point.getZ());
+                        break;
+                    case "PYRAMID":
+                        object = new Pyramid(camera.camera_point.getX()+Math.cos(Math.toRadians(camera.fovx))*2, camera.camera_point.getY()+Math.sin(Math.toRadians(camera.fovx))*2, camera.camera_point.getZ());
+                        break;
+                    default:
+                        break;
+
+                }
+
+                object.set_color(new Color(134, 30, 179));
+                objects.add(object);
+            }
+
+
         }
     }
 
+
+    public class MouseClickListener implements MouseListener{
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            /*
+            Cube cube = new Cube(camera.get_location());
+            cube.set_color(new Color(134, 30, 179));
+            objects.add(cube);
+            */
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    }
 
 
     public void render(){

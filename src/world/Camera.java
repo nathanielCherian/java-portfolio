@@ -101,26 +101,6 @@ public class Camera {
         camera_point.setZ(camera_point.getZ()-SPEED);
     }
 
-    /*
-    OLD MOVE METHODS
-    public void move_east(){
-        camera_point.setX(camera_point.getX()+SPEED);
-
-    }
-
-    public void move_west(){
-        camera_point.setX(camera_point.getX()-SPEED);
-    }
-
-    public void move_north(){
-        camera_point.setY(camera_point.getY()+SPEED);
-    }
-
-    public void move_south(){
-        camera_point.setY(camera_point.getY()-SPEED);
-    }
-
-     */
 
 
 

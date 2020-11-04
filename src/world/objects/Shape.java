@@ -21,6 +21,12 @@ public class Shape {
         this.z = z;
     }
 
+    public Shape(Point3D point){
+        this.x = point.getX();
+        this.y = point.getY();
+        this.z = point.getZ();
+    }
+
     public Shape(double x, double y, double z, int ps, Color c){
         this.x = x;
         this.y = y;
