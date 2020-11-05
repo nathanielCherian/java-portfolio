@@ -215,9 +215,9 @@ public class TicTacToe implements ActionListener{
     }
 
     public void xWins(int a,int b,int c) {
-        buttons[a].setBackground(Color.BLUE);
-        buttons[b].setBackground(Color.BLUE);
-        buttons[c].setBackground(Color.BLUE);
+        buttons[a].setBackground(Color.RED);
+        buttons[b].setBackground(Color.RED);
+        buttons[c].setBackground(Color.RED);
 
         for(int i=0;i<9;i++) {
             buttons[i].setEnabled(false);
