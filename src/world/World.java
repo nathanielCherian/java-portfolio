@@ -7,10 +7,8 @@ import world.primatives.Point3D;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
+import java.security.PublicKey;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,7 +29,7 @@ public class World extends JPanel {
 
 
 
-        Cube cube = new Cube(5,0.5,1);
+        Cube cube = new Cube(5,1,1);
         cube.set_color(new Color(39, 179, 30));
         objects.add(cube);
 
@@ -60,6 +58,8 @@ public class World extends JPanel {
         addKeyListener(new WorldKeyListener());
         setFocusable(true);
 
+        addMouseListener(new MouseClickListener());
+
 
 
         xyzLabel.setLocation(0,0);
@@ -73,9 +73,18 @@ public class World extends JPanel {
     }
 
 
+    double th = 0.0;
     protected Timer timer = new Timer(50, new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
+
+            /*
+            objects.get(0).rotateAboutZ(new Point3D(0,1,1),th);
+            objects.get(0).rotateAboutX(new Point3D(0,1,1),th);
+            objects.get(0).rotateAboutY(new Point3D(0,1,1),th);
+
+            th += .01;
+            */
 
 
             for(int key: pressed_keys){
@@ -131,12 +140,15 @@ public class World extends JPanel {
     }
 
 
+    String SHAPE_STATE = "CUBE";
+
     Set<Integer> pressed_keys = new HashSet<>();
     public class WorldKeyListener implements KeyListener {
 
 
         @Override
         public void keyTyped(KeyEvent e) {
+
 
         }
 
@@ -152,9 +164,82 @@ public class World extends JPanel {
         public void keyReleased(KeyEvent e) {
             int keycode = e.getKeyCode();
             pressed_keys.remove(keycode);
+
+
+            //I should make this better :(
+
+            switch (keycode){
+                case 49: // 1
+                    SHAPE_STATE = "CUBE";
+                    break;
+                case 50: // 2
+                    SHAPE_STATE = "PYRAMID";
+                    break;
+                case 51: // 3
+                    SHAPE_STATE = "OCTAHEDRON";
+                default:
+                    break;
+
+            }
+
+            if(keycode == 88){
+                Shape object = new Shape(0,0,0);
+                switch (SHAPE_STATE){
+                    case "CUBE":
+                        object = new Cube(camera.camera_point.getX()+Math.cos(Math.toRadians(camera.fovx))*2, camera.camera_point.getY()+Math.sin(Math.toRadians(camera.fovx))*2, camera.camera_point.getZ());
+                        break;
+                    case "PYRAMID":
+                        object = new Pyramid(camera.camera_point.getX()+Math.cos(Math.toRadians(camera.fovx))*2, camera.camera_point.getY()+Math.sin(Math.toRadians(camera.fovx))*2, camera.camera_point.getZ());
+                        break;
+                    case "OCTAHEDRON":
+                        object = new Octahedron(camera.camera_point.getX()+Math.cos(Math.toRadians(camera.fovx))*2, camera.camera_point.getY()+Math.sin(Math.toRadians(camera.fovx))*2, camera.camera_point.getZ());
+                        break;
+                    default:
+                        break;
+
+                }
+
+                object.set_color(new Color(134, 30, 179));
+                objects.add(object);
+            }
+
+
         }
     }
 
+
+    public class MouseClickListener implements MouseListener{
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            /*
+            Cube cube = new Cube(camera.get_location());
+            cube.set_color(new Color(134, 30, 179));
+            objects.add(cube);
+            */
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    }
 
 
     public void render(){
@@ -186,39 +271,20 @@ public class World extends JPanel {
 
 
 
-    public void draw_scaled_point(GPoint point, Graphics2D g2d){
-        Dimension size = getSize();
-
-        int half_width = size.width /2;
-        int half_height = size.height /2;
-
-        int x = (int) ((half_width*point.getX()) + half_width);
-        int y = (int) ((half_height*point.getY()) + half_height);
-
-        int r = point.size;
-        Color c = point.color;
-
-        g2d.setColor(c);
-        g2d.fillOval(x, y, r, r);
-        g2d.drawLine(half_width,half_height,x,y);
-
-
-    }
-
-
-
-
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         Graphics2D g2d = (Graphics2D) g;
 
+        for(Shape object: objects){
 
-        for(GPoint point: points2D){
-            draw_scaled_point(point, g2d);
+            object.draw_points(g2d, getSize());
+            object.draw_connections(g2d, getSize());
+
         }
 
+        
 
     }
 }
