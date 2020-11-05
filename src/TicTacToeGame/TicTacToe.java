@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
-//public class TicTacToe implements ActionListener
+
 public class TicTacToe implements ActionListener{
 
     Random random = new Random();
@@ -235,4 +235,3 @@ public class TicTacToe implements ActionListener{
         textfield.setText("O wins");
     }
 }
-//***************************************
