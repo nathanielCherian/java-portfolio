@@ -175,6 +175,8 @@ public class World extends JPanel {
                 case 50: // 2
                     SHAPE_STATE = "PYRAMID";
                     break;
+                case 51: // 3
+                    SHAPE_STATE = "OCTAHEDRON";
                 default:
                     break;
 
@@ -188,6 +190,9 @@ public class World extends JPanel {
                         break;
                     case "PYRAMID":
                         object = new Pyramid(camera.camera_point.getX()+Math.cos(Math.toRadians(camera.fovx))*2, camera.camera_point.getY()+Math.sin(Math.toRadians(camera.fovx))*2, camera.camera_point.getZ());
+                        break;
+                    case "OCTAHEDRON":
+                        object = new Octahedron(camera.camera_point.getX()+Math.cos(Math.toRadians(camera.fovx))*2, camera.camera_point.getY()+Math.sin(Math.toRadians(camera.fovx))*2, camera.camera_point.getZ());
                         break;
                     default:
                         break;

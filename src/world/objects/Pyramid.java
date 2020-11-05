@@ -6,6 +6,10 @@ public class Pyramid extends Shape{
 
     public Pyramid(double x, double y, double z) {
         super(x, y, z);
+    }
+
+
+    protected void init(){
 
         vertices = new Point3D[5];
 
@@ -22,6 +26,8 @@ public class Pyramid extends Shape{
         vertices[3].setLinked_points(new Point3D[] {vertices[1], vertices[2], vertices[4]});
 
         transform();
-
     }
+
+
+
 }

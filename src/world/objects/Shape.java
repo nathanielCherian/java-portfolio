@@ -15,16 +15,21 @@ public class Shape {
     int point_size = 10;
     Color point_color = new Color(0,0,0);
 
+
     public Shape(double x, double y, double z){
         this.x = x;
         this.y = y;
         this.z = z;
+
+        init();
     }
 
     public Shape(Point3D point){
         this.x = point.getX();
         this.y = point.getY();
         this.z = point.getZ();
+
+        init();
     }
 
     public Shape(double x, double y, double z, int ps, Color c){
@@ -34,8 +39,12 @@ public class Shape {
 
         this.point_size = ps;
         this.point_color = c;
+
+        init();
     }
 
+
+    protected void init(){}
     protected void transform(){
 
         for(Point3D point: vertices){
@@ -71,9 +80,11 @@ public class Shape {
             double y = -1*Math.sin(thetax)*vpoint.getX() + Math.cos(thetax)*vpoint.getY();
             double z = vpoint.getZ();
 
-            Point3D nvpoint = new Point3D(x,y,z);
+            Point3D np = Point3D.add(new Point3D(x,y,z),origin);
 
-            vertices[i] = Point3D.add(nvpoint,origin);
+            vertices[i].setX(np.getX());
+            vertices[i].setY(np.getY());
+            vertices[i].setZ(np.getZ());
 
         }
 
@@ -93,8 +104,11 @@ public class Shape {
             double z = Math.sin(thetaz)*vpoint.getY() + Math.cos(thetaz)*vpoint.getZ();
 
 
-            Point3D nvpoint = new Point3D(x,y,z);
-            vertices[i] = Point3D.add(nvpoint,origin);
+            Point3D np = Point3D.add(new Point3D(x,y,z),origin);
+
+            vertices[i].setX(np.getX());
+            vertices[i].setY(np.getY());
+            vertices[i].setZ(np.getZ());
 
         }
 
@@ -114,8 +128,11 @@ public class Shape {
             double z = Math.sin(thetay)*vpoint.getX() + Math.cos(thetay)*vpoint.getZ();
 
 
-            Point3D nvpoint = new Point3D(x,y,z);
-            vertices[i] = Point3D.add(nvpoint,origin);
+            Point3D np = Point3D.add(new Point3D(x,y,z),origin);
+
+            vertices[i].setX(np.getX());
+            vertices[i].setY(np.getY());
+            vertices[i].setZ(np.getZ());
 
         }
 
@@ -146,6 +163,9 @@ public class Shape {
         int half_width = size.width /2;
         int half_height = size.height /2;
 
+        g2d.setStroke(new BasicStroke(5));
+        g2d.setColor(point_color);
+
         for (Point3D point: vertices){
 
             if(point.gpoint != null && point.linked_points != null){
@@ -161,7 +181,7 @@ public class Shape {
                         int y2 = (int) ((half_height*lpoint.gpoint.getY()) + half_height);
 
 
-                        g2d.setStroke(new BasicStroke(5));
+
                         g2d.drawLine(x, y, x2, y2);
 
                     }

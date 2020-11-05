@@ -6,12 +6,10 @@ public class Cube extends Shape{
 
     public Cube(double x, double y, double z) {
         super(x, y, z); //left corner
-        init();
     }
 
     public Cube(Point3D point) {
         super(point); //left corner
-        init();
     }
 
     protected void init(){
