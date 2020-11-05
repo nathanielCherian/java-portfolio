@@ -18,8 +18,8 @@ public class TicTacToe implements ActionListener{
     TicTacToe(){
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800,800);
-        frame.getContentPane().setBackground(new Color(50,50,50));
+        frame.setSize(900,900);
+        frame.getContentPane().setBackground(new Color(55,55,55));
         frame.setLayout(new BorderLayout());
         frame.setVisible(true);
 
