@@ -37,13 +37,13 @@ public class Draw extends JLabel {
         g.fillRect(p.x,p.y, 32,32);
 
         //Draw Border
-        g.setColor(Color.BLACK);
+        g.setColor(new Color(255, 150, 255));
         g.drawRect(Gui.xoff, Gui.yoff, 512, 512);
 
         //Draw Score
-        g.setFont(new Font("Arial", Font.BOLD, 30));
-        g.drawString("Score: "+Snake.score, 10,270);
-        g.drawString("Best: "+Snake.bestscore, 655,270);
+        g.setFont(new Font("Italic", Font.ITALIC, 27));
+        g.drawString("Score: "+Snake.score, 4,270);
+        g.drawString("Best: "+Snake.bestscore, 660,270);
 
         repaint();
 
