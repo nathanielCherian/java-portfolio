@@ -8,6 +8,8 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
 public class RouletteUI extends JFrame {
+
+
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             try {

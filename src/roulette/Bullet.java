@@ -4,11 +4,12 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
 public class Bullet {
-    boolean loaded;
+    public static enum STATE {BLANK, REAL, FIRED};
+    STATE state;
 
 
-    public Bullet (boolean loaded) {
-        this.loaded = loaded;
+    public Bullet (STATE state) {
+        this.state = state;
     }
 
 
