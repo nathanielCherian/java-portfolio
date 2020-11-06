@@ -148,14 +148,13 @@ public class World extends JPanel {
 
 
     String SHAPE_STATE = "CUBE";
-
+    Boolean SHOW_POINTS = true;
     Set<Integer> pressed_keys = new HashSet<>();
     public class WorldKeyListener implements KeyListener {
 
 
         @Override
         public void keyTyped(KeyEvent e) {
-
 
         }
 
@@ -208,6 +207,9 @@ public class World extends JPanel {
 
                 object.set_color(new Color(134, 30, 179));
                 objects.add(object);
+
+            }else if(keycode == 80){
+                SHOW_POINTS = !SHOW_POINTS;
             }
 
 
@@ -287,7 +289,9 @@ public class World extends JPanel {
 
         for(Shape object: objects){
 
-            object.draw_points(g2d, getSize());
+            if(SHOW_POINTS){
+                object.draw_points(g2d, getSize());
+            }
             object.draw_connections(g2d, getSize());
 
         }
