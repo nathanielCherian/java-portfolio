@@ -23,6 +23,7 @@ public class World extends JPanel {
 
     JLabel xyzLabel = new JLabel("xyz");
     JLabel fovLabel = new JLabel("fov");
+    JLabel shapeLabel = new JLabel("shape");
 
 
     public World(){
@@ -69,6 +70,9 @@ public class World extends JPanel {
         fovLabel.setText(camera.getFOVString());
         add(fovLabel);
 
+        shapeLabel.setText(SHAPE_STATE);
+        add(shapeLabel);
+
 
     }
 
@@ -78,13 +82,16 @@ public class World extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+
+
+
             /*
             objects.get(0).rotateAboutZ(new Point3D(0,1,1),th);
             objects.get(0).rotateAboutX(new Point3D(0,1,1),th);
             objects.get(0).rotateAboutY(new Point3D(0,1,1),th);
 
             th += .01;
-            */
+           */
 
 
             for(int key: pressed_keys){
@@ -267,6 +274,7 @@ public class World extends JPanel {
 
         xyzLabel.setText(camera.get_location().toCleanString());
         fovLabel.setText(camera.getFOVString());
+        shapeLabel.setText(SHAPE_STATE);
     }
 
 

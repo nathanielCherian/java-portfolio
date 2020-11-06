@@ -2,6 +2,7 @@ package world.objects;
 
 import world.primatives.Point3D;
 
+import javax.sound.sampled.Port;
 import java.awt.*;
 
 public class Shape {
@@ -62,6 +63,44 @@ public class Shape {
             point.x += x;
             point.y += y;
             point.z += z;
+        }
+
+    }
+
+
+    //YAW=rotate about x, PITCH=rotate about z, ROLL=rotate about y
+    public void rotate(Point3D origin, double yaw, double pitch, double roll){
+
+        yaw = Math.toRadians(yaw);
+        pitch = Math.toRadians(pitch);
+        roll = Math.toRadians(roll);
+
+        for(int i=0;i<vertices.length;i++){
+
+            Point3D vpoint = Point3D.subtract(vertices[i],origin);
+
+            // YAW
+            double x = Math.cos(yaw)*vpoint.getX() + Math.sin(yaw)*vpoint.getY();
+            double y = -1*Math.sin(yaw)*vpoint.getX() + Math.cos(yaw)*vpoint.getY();
+            double z = vpoint.getZ();
+
+            // PITCH
+            x = x;
+            y = Math.cos(pitch)*y + -1*Math.sin(pitch)*z;
+            z = Math.sin(pitch)*y + Math.cos(pitch)*z;
+
+            // ROLL
+            x = Math.cos(roll)*x + -1*Math.sin(roll)*z;
+            y = y;
+            z = Math.sin(roll)*x + Math.cos(roll)*z;
+
+
+            Point3D np = Point3D.add(new Point3D(x,y,z),origin);
+
+            vertices[i].setX(np.getX());
+            vertices[i].setY(np.getY());
+            vertices[i].setZ(np.getZ());
+
         }
 
     }
@@ -138,6 +177,26 @@ public class Shape {
 
     }
 
+
+
+    public void scale(Point3D origin, double factor){
+
+        for(int i=0;i<vertices.length;i++) {
+
+            Point3D vpoint = Point3D.subtract(vertices[i], origin);
+
+            double x = vpoint.getX()*factor;
+            double y = vpoint.getY()*factor;
+            double z = vpoint.getZ()*factor;
+
+            Point3D np = Point3D.add(new Point3D(x,y,z),origin);
+
+            vertices[i].setX(np.getX());
+            vertices[i].setY(np.getY());
+            vertices[i].setZ(np.getZ());
+
+        }
+    }
 
 
 
