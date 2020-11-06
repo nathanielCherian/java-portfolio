@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
-
+import SnakeGame.Start;
 public class Portfolio extends JFrame{
 
     public static void main(String[] args){
@@ -25,7 +25,7 @@ public class Portfolio extends JFrame{
 
     }
 
-
+    JButton snake_button = new JButton("Snake");
     JButton aimboost_button = new JButton("aimboost");
     JButton calculator_button = new JButton("calculator");
     JButton hangman_button = new JButton("hangman");
@@ -98,6 +98,12 @@ public class Portfolio extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(500,500));
         setLayout(new FlowLayout());
+
+        snake_button.addActionListener(e -> {
+            System.out.println("Snake");
+            Start.main(null);
+        });
+        add(snake_button);
 
         aimboost_button.addActionListener(e -> {
             System.out.println("aimboost");
