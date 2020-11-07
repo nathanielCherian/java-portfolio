@@ -37,6 +37,10 @@ public class RouletteUI extends JFrame {
             g.fill(e);
     }
 
+    /*
+
+    comon anthony dont push broken code
+
     private void fireGun() {
         if (chamber.getObject().state == 1) {
             dead = true;
@@ -45,6 +49,8 @@ public class RouletteUI extends JFrame {
         }
     }
 
+
+     */
     private final Stack chamber = new Stack();
     boolean dead;
     int paintMode = 1;
