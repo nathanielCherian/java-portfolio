@@ -5,6 +5,7 @@ import javax.swing.border.MatteBorder;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class RouletteUI extends JFrame {
 
@@ -18,8 +19,6 @@ public class RouletteUI extends JFrame {
             }
         });
     }
-
-    //roulette.Stack chamber = new roulette.Stack();
 
     ArrayList<Ellipse2D> c = new ArrayList<Ellipse2D>();
 
@@ -38,17 +37,16 @@ public class RouletteUI extends JFrame {
             g.fill(e);
     }
 
-
-    boolean dead;
-
-    /*private void fireGun() {
-        if (chamber.getObject().STATE == roulette.Bullet.STATE.REAL) {
+    private void fireGun() {
+        if (chamber.getObject().state == 1) {
             dead = true;
         } else {
             chamber.pop();
         }
-    }*/
+    }
 
+    private final Stack chamber = new Stack();
+    boolean dead;
     int paintMode = 1;
     int bulletNumber;
     private void redrawBullet(Ellipse2D c, Graphics2D g) {
