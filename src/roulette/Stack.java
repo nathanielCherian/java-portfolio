@@ -1,13 +1,6 @@
 package roulette;
 
-import java.util.*;
-
-/**
- *  Implementation of Stack, using LinkedList (previous only).
- *
- * @author     John Mortensen
- * December 24, 2019
- */
+import roulette.LinkedList;
 public class Stack
 {
     private LinkedList lifo;  // last in first out Object of stack
@@ -28,12 +21,7 @@ public class Stack
      */
     public Object getObject()
     {
-        if (lifo == null)
-        {
-            throw new NoSuchElementException();
-        }
-        else
-            return lifo.getObject();
+        return lifo.getObject();
     }
 
     /**
