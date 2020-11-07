@@ -1,5 +1,6 @@
 package world;
 
+import world.entities.Projectile;
 import world.objects.*;
 import world.objects.Shape;
 import world.primatives.GPoint;
@@ -18,7 +19,6 @@ public class World extends JPanel {
     Camera camera = new Camera(new Point3D(0,0,0));
 
     ArrayList<Shape> objects = new ArrayList<>();
-    ArrayList<GPoint> points2D = new ArrayList<>();
 
 
     JLabel xyzLabel = new JLabel("xyz");
@@ -83,8 +83,6 @@ public class World extends JPanel {
         public void actionPerformed(ActionEvent e) {
 
 
-
-
             /*
             objects.get(0).rotateAboutZ(new Point3D(0,1,1),th);
             objects.get(0).rotateAboutX(new Point3D(0,1,1),th);
@@ -92,6 +90,7 @@ public class World extends JPanel {
 
             th += .01;
            */
+
 
 
             for(int key: pressed_keys){
@@ -210,6 +209,9 @@ public class World extends JPanel {
 
             }else if(keycode == 80){
                 SHOW_POINTS = !SHOW_POINTS;
+            }else if(keycode == 70){
+                Projectile pp = new Projectile(camera.get_location(), camera);
+                objects.add(pp);
             }
 
 
@@ -253,23 +255,27 @@ public class World extends JPanel {
 
     public void render(){
 
-        points2D.clear();
 
-        for (Shape object: objects){
+        for (int i=0;i<objects.size(); i++){
 
-            int ps = object.get_point_size();
-            Color c = object.get_color();
+            int ps = objects.get(i).get_point_size();
+            Color c = objects.get(i).get_color();
 
-            for(Point3D point: object.getPoints()){
+            for(Point3D point: objects.get(i).getPoints()){
                 GPoint point2d;
                 point.gpoint = null;
                 if((point2d=camera.project2D(point)) != null){
                     point2d.setSize(ps);
                     point2d.setColor(c);
-                    points2D.add(point2d);
                     point.gpoint = point2d;
                 }
             }
+
+
+            if(!objects.get(i).update()){
+                objects.remove(i);
+            }
+
         }
 
         repaint();
@@ -288,6 +294,7 @@ public class World extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
 
         for(Shape object: objects){
+
 
             if(SHOW_POINTS){
                 object.draw_points(g2d, getSize());

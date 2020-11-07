@@ -1,11 +1,12 @@
 package world.objects;
 
+import world.entities.Entity;
 import world.primatives.Point3D;
 
 import javax.sound.sampled.Port;
 import java.awt.*;
 
-public class Shape {
+public class Shape implements Entity {
 
     double x;
     double y;
@@ -64,6 +65,7 @@ public class Shape {
             point.y += y;
             point.z += z;
         }
+
 
     }
 
@@ -196,7 +198,16 @@ public class Shape {
             vertices[i].setZ(np.getZ());
 
         }
+
     }
+
+
+
+    public boolean contains(Point3D point){
+
+        return true;
+    }
+
 
 
 
@@ -256,15 +267,15 @@ public class Shape {
 
 
     public double getX(){
-        return x;
+        return vertices[0].getX();
     }
 
     public double getY(){
-        return y;
+        return vertices[0].getY();
     }
 
     public double getZ(){
-        return z;
+        return vertices[0].getZ();
     }
 
 
@@ -293,6 +304,12 @@ public class Shape {
         point_color = c;
     }
 
+
+
+    @Override
+    public Boolean update() {
+        return true;
+    }
 
 
 }

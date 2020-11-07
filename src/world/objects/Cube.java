@@ -4,6 +4,8 @@ import world.primatives.Point3D;
 
 public class Cube extends Shape{
 
+
+
     public Cube(double x, double y, double z) {
         super(x, y, z); //left corner
     }
@@ -13,6 +15,7 @@ public class Cube extends Shape{
     }
 
     protected void init(){
+
 
         vertices = new Point3D[8];
 
