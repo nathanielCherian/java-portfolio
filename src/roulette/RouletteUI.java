@@ -6,8 +6,12 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
+import java.util.Stack;
+import roulette.Bullet;
 
 public class RouletteUI extends JFrame {
+    private final int REAL = 0;
+    private final int BLANK = 1;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -26,11 +30,11 @@ public class RouletteUI extends JFrame {
         for (int i = 0; i < c.size(); i++)
             c.remove(i);
         c.add(new Ellipse2D.Double(225, 50, 50, 50));
-        c.add(new Ellipse2D.Double(150, 100, 50, 50));
-        c.add(new Ellipse2D.Double(150, 175, 50, 50));
         c.add(new Ellipse2D.Double(300, 100, 50, 50));
         c.add(new Ellipse2D.Double(300, 175, 50, 50));
         c.add(new Ellipse2D.Double(225, 225, 50, 50));
+        c.add(new Ellipse2D.Double(150, 100, 50, 50));
+        c.add(new Ellipse2D.Double(150, 175, 50, 50));
 
         g.setColor(Color.gray);
         for (Ellipse2D e : c)
@@ -38,7 +42,8 @@ public class RouletteUI extends JFrame {
     }
 
     private void fireGun() {
-        if (chamber.getObject().state == 1) {
+        Bullet b = (Bullet) chamber.peek();
+        if (b.state == REAL) {
             dead = true;
         } else {
             chamber.pop();
@@ -49,8 +54,18 @@ public class RouletteUI extends JFrame {
     boolean dead;
     int paintMode = 1;
     int bulletNumber;
-    private void redrawBullet(Ellipse2D c, Graphics2D g) {
+    int bulletState;
+    private void redrawBullet(Ellipse2D c, Graphics2D g, int state) {
+        switch (state) {
+            case REAL:
+                g.setColor(Color.RED);
+                break;
+            case BLANK:
+                g.setColor(Color.gray);
+                break;
+        }
 
+        g.fill(c);
     }
 
     public RouletteUI () {
@@ -76,6 +91,8 @@ public class RouletteUI extends JFrame {
                     case 1:
                         drawCircles(g2d);
                         break;
+                    case 2:
+                        redrawBullet(c.get(bulletNumber), g2d, bulletState);
                 }
 
             }
