@@ -7,11 +7,17 @@ import java.awt.geom.Ellipse2D;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Stack;
-import roulette.Bullet;
 
 public class RouletteUI extends JFrame {
     private final int REAL = 0;
     private final int BLANK = 1;
+
+    private final Stack chamber = new Stack();
+    boolean dead;
+    int paintMode = 1;
+    int bulletNumber = 0;
+    int bulletState;
+    ArrayList<Ellipse2D> c = new ArrayList<Ellipse2D>();
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
@@ -23,8 +29,6 @@ public class RouletteUI extends JFrame {
             }
         });
     }
-
-    ArrayList<Ellipse2D> c = new ArrayList<Ellipse2D>();
 
     public void drawCircles (Graphics2D g) {
         for (int i = 0; i < c.size(); i++)
@@ -41,10 +45,6 @@ public class RouletteUI extends JFrame {
             g.fill(e);
     }
 
-    /*
-
-    comon anthony dont push broken code
-
     private void fireGun() {
         Bullet b = (Bullet) chamber.peek();
         if (b.state == REAL) {
@@ -54,13 +54,6 @@ public class RouletteUI extends JFrame {
         }
     }
 
-
-     */
-    private final Stack chamber = new Stack();
-    boolean dead;
-    int paintMode = 1;
-    int bulletNumber;
-    int bulletState;
     private void redrawBullet(Ellipse2D c, Graphics2D g, int state) {
         switch (state) {
             case REAL:
@@ -74,9 +67,15 @@ public class RouletteUI extends JFrame {
         g.fill(c);
     }
 
+    private void resetGame () {
+        bulletNumber = 0;
+        paintMode = 1;
+        repaint();
+    }
+
     public RouletteUI () {
         //setting standards for color and font
-        Font f = new Font("Comic Sans MS", Font.PLAIN, 20);
+        Font f = new Font("Gadugi", Font.PLAIN, 20);
         MatteBorder b = new MatteBorder(4, 4, 4, 4, Color.BLACK);
         Color r = new Color(208, 75, 75);
         Color bl = new Color(0, 0, 0);
@@ -113,6 +112,7 @@ public class RouletteUI extends JFrame {
         fireButton.setBackground(r);
         fireButton.setOpaque(true);
         fireButton.setVisible(true);
+        fireButton.setFont(f);
         getContentPane().add(fireButton);
 
         JButton reloadButton = new JButton("Reset Chamber");
@@ -121,6 +121,7 @@ public class RouletteUI extends JFrame {
         reloadButton.setBackground(r);
         reloadButton.setOpaque(true);
         reloadButton.setVisible(true);
+        reloadButton.setFont(new Font("Gadugi", Font.PLAIN, 10));
         getContentPane().add(reloadButton);
     }
 
