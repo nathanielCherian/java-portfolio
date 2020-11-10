@@ -11,9 +11,10 @@ import java.util.Stack;
 public class RouletteUI extends JFrame {
     private final int REAL = 0;
     private final int BLANK = 1;
+    private final int FULLCHAMBER = 1;
+    private final int ONEBULLET = 2;
 
-    private final Stack chamber = new Stack();
-    boolean dead;
+    private Stack chamber = new Stack();
     int paintMode = 1;
     int bulletNumber = 0;
     int bulletState;
@@ -45,13 +46,13 @@ public class RouletteUI extends JFrame {
             g.fill(e);
     }
 
-    private void fireGun() {
+    private void fireGun(JPanel p) {
         Bullet b = (Bullet) chamber.peek();
-        if (b.state == REAL) {
-            dead = true;
-        } else {
-            chamber.pop();
-        }
+        bulletState = b.state;
+        paintMode = ONEBULLET;
+        p.repaint();
+        chamber.pop();
+        bulletNumber++;
     }
 
     private void redrawBullet(Ellipse2D c, Graphics2D g, int state) {
@@ -60,7 +61,7 @@ public class RouletteUI extends JFrame {
                 g.setColor(Color.RED);
                 break;
             case BLANK:
-                g.setColor(Color.gray);
+                g.setColor(Color.BLACK);
                 break;
         }
 
@@ -69,7 +70,8 @@ public class RouletteUI extends JFrame {
 
     private void resetGame () {
         bulletNumber = 0;
-        paintMode = 1;
+        chamber = RouletteControl.loadChamber();
+        paintMode = FULLCHAMBER;
         repaint();
     }
 
@@ -113,6 +115,7 @@ public class RouletteUI extends JFrame {
         fireButton.setOpaque(true);
         fireButton.setVisible(true);
         fireButton.setFont(f);
+        fireButton.addActionListener(e -> fireGun(p));
         getContentPane().add(fireButton);
 
         JButton reloadButton = new JButton("Reset Chamber");
@@ -123,6 +126,8 @@ public class RouletteUI extends JFrame {
         reloadButton.setVisible(true);
         reloadButton.setFont(new Font("Gadugi", Font.PLAIN, 10));
         getContentPane().add(reloadButton);
+
+        resetGame();
     }
 
 }
