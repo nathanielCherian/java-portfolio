@@ -12,6 +12,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 import SnakeGame.Start;
+import roulette.RouletteUI;
+
 public class Portfolio extends JFrame{
 
     public static void main(String[] args){
@@ -32,6 +34,7 @@ public class Portfolio extends JFrame{
     JButton game_button = new JButton("run game");
     JButton world_button = new JButton("3D World");
     JButton tictactoe_button = new JButton("tictactoe");
+    JButton roulette_button = new JButton("Russian Roulette");
 
 
     int r = 100;
@@ -138,6 +141,11 @@ public class Portfolio extends JFrame{
             TicTacToeGame.Home.main(null);
         });
         add(tictactoe_button);
+
+        roulette_button.addActionListener(e -> {
+            RouletteUI.main(null);
+        });
+        add(roulette_button);
 
         timer.start();
         pack();
