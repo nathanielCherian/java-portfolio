@@ -23,7 +23,7 @@ The whole portfolio can be launched by running main method within Main.java.
 ### Completion of goals:
 | Person | Work | Grade |
 | --- | --- | --- |
-| Nathan | Completed work on [3D World](https://github.com/nathanielCherian/java-portfolio/tree/master/src/world), [Aimboost](https://github.com/nathanielCherian/java-portfolio/tree/master/src/app), [Run Game](https://github.com/nathanielCherian/java-portfolio/tree/master/src/game) and (main menu)[https://github.com/nathanielCherian/java-portfolio/blob/master/src/Portfolio.java]. My (Anthony) pick for MVP, as he set up the integration and created the most impressive project. | 25/25 |
+| Nathan | Completed work on [3D World](https://github.com/nathanielCherian/java-portfolio/tree/master/src/world), [Aimboost](https://github.com/nathanielCherian/java-portfolio/tree/master/src/app), [Run Game](https://github.com/nathanielCherian/java-portfolio/tree/master/src/game) and [main menu](https://github.com/nathanielCherian/java-portfolio/blob/master/src/Portfolio.java). My (Anthony) pick for MVP, as he set up the integration and created the most impressive project. | 25/25 |
 | Anthony | Finished [Hangman Game](https://github.com/nathanielCherian/java-portfolio/tree/master/src/hangman) and [Roulette Game](https://github.com/nathanielCherian/java-portfolio/tree/master/src/roulette). | 25/25 |
 | Jett | Created UI for [Tic-Tac-Toe game](https://github.com/nathanielCherian/java-portfolio/tree/master/out/production/java-portfolio/TicTacToeGame) and added his [Calculator](https://github.com/nathanielCherian/java-portfolio/tree/master/out/production/java-portfolio/calc) project. Also completed [Snake Game](https://github.com/nathanielCherian/java-portfolio/tree/master/src/SnakeGame). | 25/25 |
 | Benny | Worked on logic and control for [Tic-Tac-Toe game](https://github.com/nathanielCherian/java-portfolio/tree/master/out/production/java-portfolio/TicTacToeGame). | 25/25 |
@@ -40,7 +40,7 @@ As touched on in the last section, our project is neatly organized into a file h
 Each member of our group was able to commit to GitHub and add to the portfolio, as seen in the commit history. We were also able to push our project onto the N@TM webpage successfully.
 
 ### Algorithms
-Our projects were based on the lessons given throughout the weeks. For example, the Roulette Game uses (Stacks and ArrayLists)[https://github.com/nathanielCherian/java-portfolio/blob/f49f8796fab9cd10f907946236e6603375747e73/src/roulette/RouletteUI.java#L16] in order to draw circles and fire bullets. Similarly, the [3D World](https://github.com/nathanielCherian/java-portfolio/tree/master/src/world) incorporates various algorithms to draw each of the shapes with the right field of view.
+Our projects were based on the lessons given throughout the weeks. For example, the Roulette Game uses [Stacks and ArrayLists](https://github.com/nathanielCherian/java-portfolio/blob/f49f8796fab9cd10f907946236e6603375747e73/src/roulette/RouletteUI.java#L16) in order to draw circles and fire bullets. Similarly, the [3D World](https://github.com/nathanielCherian/java-portfolio/tree/master/src/world) incorporates various algorithms to draw each of the shapes with the right field of view.
 
 ### Creativity
 The use of the repaint() function in order to create 3D World and the changing color of the background in Portfolio.java deserve recognition for creativity. The variety of games showcased here also show creativity.
