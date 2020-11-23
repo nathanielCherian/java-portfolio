@@ -16,53 +16,71 @@ The whole portfolio can be launched by running main method within Main.java.
 | [@bennyherrick](https://github.com/bennyherrick) | Benjamin Herrick |
 | [@brendan8503](https://github.com/brendan8503) | Brendan Trinh |
 
-Click [here](https://github.com/JettKim/PortfolioTrio) for the alternate portfolio Jett, Benny, and Brendan used for their work the last few weeks.
+## Final Video Presentation
+[Click here to see our video](https://www.youtube.com/watch?v=CBv8huXO9hE&feature=youtu.be)
 
 ## Group Grading
-### Goals for the week: 
-| Person(s) | Goals |
-| --- | --- |
-| Nathan | Further progress on 3D World project: The 3DWorld project will make use of MVC through the many different components of the game. The process of of projecting a 3D model onto a 2D space is one that works very well with MVC. Our Model is a systen of classes that each inherit/implement their basic components. To assisst with this we created a new "primative" called Point3D. Our Control is contained within the "Camera" class, which the player controls. This calculates the projects from our 3D world to a 2D plane. | Our View is summed up with a custom GPoint class that allows us to display these points easily to the user.
-| Anthony | Create basis for hangman game; use view to show letter selection, control to take in letters, model to connect the two |
-| Jett, Brendan, Benny | Properly display MVC with a tic-tac-toe game; view to select box, control for finding winner, model to connect the two |
 ### Completion of goals:
 | Person | Work | Grade |
 | --- | --- | --- |
-| Nathan | Completed work on [3D World](https://github.com/nathanielCherian/java-portfolio/tree/master/src/world), made improvements | 25/25 |
-| Anthony | Finished [Hangman project](https://github.com/nathanielCherian/java-portfolio/tree/master/src/hangman), used MVC | 25/25 |
-| Jett | Created UI for [Tic-Tac-Toe game](https://github.com/nathanielCherian/java-portfolio/tree/master/out/production/java-portfolio/TicTacToeGame) and added his [Calculator](https://github.com/nathanielCherian/java-portfolio/tree/master/out/production/java-portfolio/calc) project | 25/25 |
-| Benny | Worked on journal for the week, but didn't code | 23/25 |
-| Brendan | Worked on journal for the week, but didn't code | 23/25 |
+| Nathan | Completed work on [3D World](https://github.com/nathanielCherian/java-portfolio/tree/master/src/world), [Aimboost](https://github.com/nathanielCherian/java-portfolio/tree/master/src/app), [Run Game](https://github.com/nathanielCherian/java-portfolio/tree/master/src/game) and (main menu)[https://github.com/nathanielCherian/java-portfolio/blob/master/src/Portfolio.java]. My (Anthony) pick for MVP, as he set up the integration and created the most impressive project. | 25/25 |
+| Anthony | Finished [Hangman Game](https://github.com/nathanielCherian/java-portfolio/tree/master/src/hangman) and [Roulette Game](https://github.com/nathanielCherian/java-portfolio/tree/master/src/roulette). | 25/25 |
+| Jett | Created UI for [Tic-Tac-Toe game](https://github.com/nathanielCherian/java-portfolio/tree/master/out/production/java-portfolio/TicTacToeGame) and added his [Calculator](https://github.com/nathanielCherian/java-portfolio/tree/master/out/production/java-portfolio/calc) project. Also completed [Snake Game](https://github.com/nathanielCherian/java-portfolio/tree/master/src/SnakeGame). | 25/25 |
+| Benny | Worked on logic and control for [Tic-Tac-Toe game](https://github.com/nathanielCherian/java-portfolio/tree/master/out/production/java-portfolio/TicTacToeGame). | 25/25 |
+| Brendan | Worked on logic and control for [Tic-Tac-Toe game](https://github.com/nathanielCherian/java-portfolio/tree/master/out/production/java-portfolio/TicTacToeGame). | 25/25 |
 
-## Aimboost
+## Key Concepts
+### MVC (Model View Control)
+Our group used the principles of MVC in almost every lab we did. Each project is seperated into its own folder where the Model, View, and Control are separated into different files. We also used MVC to integrate our project into the main menu, as each project has its own class file that is called from Portfolio.java.
+
+### Organization
+As touched on in the last section, our project is neatly organized into a file hierarchy. Each project has its own folder and it all links together in Portfolio.java. The use of the Portfolio.java file allowed us to integrate easily and effectively. 
+
+### Collaboration
+Each member of our group was able to commit to GitHub and add to the portfolio, as seen in the commit history. We were also able to push our project onto the N@TM webpage successfully.
+
+### Algorithms
+Our projects were based on the lessons given throughout the weeks. For example, the Roulette Game uses (Stacks and ArrayLists)[https://github.com/nathanielCherian/java-portfolio/blob/f49f8796fab9cd10f907946236e6603375747e73/src/roulette/RouletteUI.java#L16] in order to draw circles and fire bullets. Similarly, the [3D World](https://github.com/nathanielCherian/java-portfolio/tree/master/src/world) incorporates various algorithms to draw each of the shapes with the right field of view.
+
+### Creativity
+The use of the repaint() function in order to create 3D World and the changing color of the background in Portfolio.java deserve recognition for creativity. The variety of games showcased here also show creativity.
+
+## Projects
+### Aimboost
 The aimboost game features random circles that spawn randomly and must be clicked with speed to be popped before they disappear.
 
-## Calculator 
+### Calculator 
 Standard Calculator with extra functions
 
 <img align="center" src="media/calculator.PNG">
 
 
-## Run Game
+### Run Game
 A game that features action listeners and advanced game timers to allow a user to move around the map with WSAD and shoot with SPACE. There are enemies that chase and try to attack you.
 
 <img align="center" src="media/run.jpg">
 
-## 3D World
+### 3D World
 The basics of a 3D game engine built in vanilla java making use of abstract classes and interfaces. When you spawn into the world you will see a grid and a cube floating above it. You can move around with WSAD and can move up with SPACE and down with SHIFT.
 You can also use the arrow keys to change your field of view (looking left/right/up/down) although this feature is a little bugged as if right now. The project as a whole relies on alot of math to project the 3D points into a 2D plane.
 
 <img align="center" src="media/3dworld.jpg">
 
-## Hangman Game
+### Hangman Game
 A version of hangman that you can play by yourself. Type a letter into the text field, check your letter, and see if you can guess the word!
 
 <img align="center" src="media/hangman.PNG">
 
-## Tic-Tac-Toe Game
+### Tic-Tac-Toe Game
 A recreation of Tic-Tac-Toe in JFrame. (Not working, only has a UI but no control code)
 
 <img align="center" src="media/tictactoe.PNG">
+
+### Snake Game
+Our take on the classic Snake Game. Use WASD to move and eat the apples!
+
+### Russian Roulette
+A game based on Russian Roulette. Click the fire button (right below the chamber, might have to hover over it for it to appear) and see where the real bullet is.
 
 ## To be completed...
 
@@ -71,6 +89,10 @@ A recreation of Tic-Tac-Toe in JFrame. (Not working, only has a UI but no contro
 - [x] Create the Math/control for the 3D game engine
 - [x] Create projection algorithm for world
 - [x] Allow full user mobility with swivel
-- [ ] Connect lines between points
+- [x] Connect lines between points
 - [x] Hangman game Control/GUI
-- [ ] Complete Tic-Tac-Toe Game
+- [x] Complete Tic-Tac-Toe Game
+- [x] Complete Hangman Game
+- [x] Complete Snake Game
+- [x] Finish foundation for Roulette Game
+- [ ] Fix Reset Chamber button in Roulette Game
